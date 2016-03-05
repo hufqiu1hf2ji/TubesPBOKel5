@@ -9,43 +9,24 @@ package sisfomanagementproyek;
  *
  * @author Notonogoro
  */
-    /*public class ManajerProyek extends Orang{
-	private Proyek proyek[];
+    public class ManajerProyek extends Orang{
+	private Proyek proyek[] = new Proyek[10];
 	private int numProyek;
-	private long budget;
 
-	public ManajerProyek(String firstNama, String lastNama, String jenisKelamin, String tanggalLahir, String telepon, String alamat,String kota,long budget){
-		super(firstNama,lastNama,jenisKelamin,tanggalLahir,telepon,alamat,kota);
-		this.budget = budget;
-		id = createID();
+	public ManajerProyek(String nama,String jenisKelamin, String telepon, String alamat){
+            super(nama,jenisKelamin,telepon,alamat);
+            numProyek = 0;
 	}
 
-	public long createID(){
-
+	public void createProyek(String namaProyek,Date deadline){
+            //me-create obyek proyek dan menginputkannya di array proyek,lalu menambahkan numProyek, dibentuk proyek bila namaProyek belum pernah ada dan numProyek < maxProyek
 	}
-
-	public void createProyek(String namaProyek,String deadline, long anggaranProyek, String tentangProyek){
-
-	}
-
-	public void createTugas(String namaProyek, String namaTugas,String deadline){
-
-	}
-
-	public void addProgrammer(String namaProyek, String namaProgrammer){
-
-	}
-
-	public void minProgrammer(String namaProyek, String namaProgrammer){
-
-	}
-
-	public void setPelaksanaTugas(String namaProyek, String namaTugas, String namaProgrammer){
-
-	}
-
-	public int searchProyek(String namaProyek){
-            
+        
+        public Proyek getProyek(int index){
+            //Mereturn proyek pada array proyek dengan nomor index
         }
-
-}*/
+        
+        public void deleteProyek(int index){
+            //Menghapus proyek pada array proyek dengan nomor index lalu menyusun array proyek
+        }
+}

@@ -10,25 +10,19 @@ package sisfomanagementproyek;
  * @author Notonogoro
  */
 public abstract class Orang {
-	private String firstNama;
-	private String lastNama;
-	private long id;
-	private String jenisKelamin;
-	private String tanggalLahir;
-	private String telepon;
-	private String alamat;
-	private String kota;
+	private String nama;
+        private String alamat;
+        private String telepon;
+        private String jenisKelamin;
 
-	public Orang(String firstNama, String lastNama, String jenisKelamin, String tanggalLahir, String telepon, String alamat,String kota){
-		this.firstNama = firstNama;
-		this.lastNama = lastNama;
+	public Orang(String nama,String jenisKelamin, String telepon, String alamat){
+		this.nama = nama;
 		this.jenisKelamin = jenisKelamin;
-		this.tanggalLahir = tanggalLahir;
 		this.telepon = telepon;
 		this.alamat = alamat;
-		this.kota = kota;
 	}
 
-	public abstract long createID();
+        //Buat Setter
+        //Buat Getter
     
 }

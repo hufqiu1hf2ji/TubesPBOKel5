@@ -9,34 +9,15 @@ package sisfomanagementproyek;
  *
  * @author Notonogoro
  */
-/*public class Programmer extends Orang{
-	private int numProyek;
-	private int numTugas;
-	private String proyekBerjalan[];
-	private String dataTugas[][];
-
-	public ManajerProyek(String firstNama, String lastNama, String jenisKelamin, String tanggalLahir, String telepon, String alamat,String kota){
-		super(firstNama,lastNama,jenisKelamin,tanggalLahir,telepon,alamat,kota);
-		id = createID();
+    public class Programmer extends Orang{
+	public String tugas;
+        public int status;
+        public boolean verifikasiStatus;
+	
+        public Programmer(String nama,String jenisKelamin, String telepon, String alamat){
+            super(nama,jenisKelamin,telepon,alamat);
+            status = 0;
+            verifikasiStatus = false;
 	}
-
-	public long createID(){
-
-	}
-
-	public void setSelesai(String namaTugas){
-
-	}
-
-	public void tambahTugas(String namaTugas){
-
-	}
-
-	public int cariTugas(String namaTugas){
-
-	}
-
-	public String getStatus(String namaTugas){
-
-	}
-}*/
+  
+    }
