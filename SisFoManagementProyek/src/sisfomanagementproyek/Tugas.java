@@ -15,20 +15,28 @@ package sisfomanagementproyek;
         private int status;
         
         public Tugas(String name){
-            //setNamaTugas, set status = 0
+           this.namaTugas=namaTugas;
+           status=0;
         }
         
-        public void setPelaksana(Programmer p){
-            /*Dilakukan bila Tugas di p == NULL || verifikasiStatus di p == true
+        /*Dilakukan bila Tugas di p == NULL || verifikasiStatus di p == true
               1. mengubah Tugas di Programmer(langsung saja karena tidak terenkapsulasi) menjadi namaTugas
               2. mengubah verifikasiStatus di Programmer = false;
               3. mengubah status di Programmer menjadi = 0;
               4. mengisi pelaksana = p
             */
+        
+        public void setPelaksana(Programmer p){
+            if(p.tugas==null || p.verifikasiStatus==true){
+                p.tugas=namaTugas;
+                p.verifikasiStatus=false;
+                p.status=0;
+                pelaksana=p;
+            }
         }
         
         public Programmer getPelaksana(){
-            
+            return pelaksana;
         }
         
         public int getStatus(){
@@ -40,11 +48,10 @@ package sisfomanagementproyek;
         }
         
         public void getNama(){
-            //return nama Tugas
+            return namaTugas;
         }
         
         public String setNama(){
-            //set nama Tugas
+            this.namaTugas=namaTugas;
         }
-        
-    }
+}
