@@ -1,32 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sisfomanagementproyek;
 
+/**
+ *
+ * @author Notonogoro
+ */
     public class ManajerProyek extends Orang{
-	private Proyek[10]proyek;
+	private Proyek proyek[] = new Proyek[10];
 	private int numProyek;
-	private int i=0;
 
-	
-	public ManajerProyek(String nama, String jenisKelamin, String telepon, String alamat){
-		super(nama,jenisKelamin,telepon,alamat);
+	public ManajerProyek(String nama,String jenisKelamin, String telepon, String alamat){
+            super(nama,jenisKelamin,telepon,alamat);
+            numProyek = 0;
 	}
 
-	public void createProyek(String namaProyek,date deadline){
+	public void createProyek(String namaProyek,Date deadline){
+            //me-create obyek proyek dan menginputkannya di array proyek,lalu menambahkan numProyek, dibentuk proyek bila namaProyek belum pernah ada dan numProyek < maxProyek
 		if(numProyekProyek<10){
 			proyek[numProyek]=p;
 			numProyek++;
 		}
 	}
-
-	public Proyek getProyek(int indexProyek){
+        
+        public Proyek getProyek(int index){
+            //Mereturn proyek pada array proyek dengan nomor index
 			return Proyek[index];
-	}
-	
-	public void deleteProyek(int indexProyek){
-		for (i=indexProyek;i<numProyek;i++){
+		}
+        
+        public void deleteProyek(int index){
+            //Menghapus proyek pada array proyek dengan nomor index lalu menyusun array proyek
+			for (i=index;i<numProyek;i++){
 			Proyek[i]=Proyek[i+1]
 		}
 		Proyek[numProyek]=null;
 		numProyek--;
-	}
-
+		}
 }
