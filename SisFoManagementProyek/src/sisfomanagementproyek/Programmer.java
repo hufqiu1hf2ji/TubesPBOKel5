@@ -19,5 +19,4 @@ package sisfomanagementproyek;
             status = 0;
             verifikasiStatus = false;
 	}
-  
     }
