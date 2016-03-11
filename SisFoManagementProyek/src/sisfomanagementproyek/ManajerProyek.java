@@ -20,13 +20,23 @@ package sisfomanagementproyek;
 
 	public void createProyek(String namaProyek,Date deadline){
             //me-create obyek proyek dan menginputkannya di array proyek,lalu menambahkan numProyek, dibentuk proyek bila namaProyek belum pernah ada dan numProyek < maxProyek
+		if(numProyek<10){
+			proyek[numProyek]=p;
+			numProyek++;
+		}
 	}
         
         public Proyek getProyek(int index){
             //Mereturn proyek pada array proyek dengan nomor index
-        }
+			return Proyek[index];
+		}
         
         public void deleteProyek(int index){
             //Menghapus proyek pada array proyek dengan nomor index lalu menyusun array proyek
-        }
+			for (i=index;i<numProyek;i++){
+			Proyek[i]=Proyek[i+1]
+		}
+		Proyek[numProyek]=null;
+		numProyek--;
+		}
 }
