@@ -14,7 +14,7 @@ package sisfomanagementproyek;
         private Programmer pelaksana;
         private int status;
         
-        public Tugas(String name){
+        public Tugas(String nameTugas){
            this.namaTugas=namaTugas;
            status=0;
         }
@@ -41,17 +41,17 @@ package sisfomanagementproyek;
         
         public int getStatus(){
             this.status=pelaksana.status;
-            if status == 1 then{
+            if (status == 1) {
                 pelaksana.verifikasiStatus = true;
             }
             return status;
         }
         
-        public void getNama(){
+        public String getNama(){
             return namaTugas;
         }
         
-        public String setNama(){
+        public void setNama(){
             this.namaTugas=namaTugas;
         }
 }
