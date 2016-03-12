@@ -5,6 +5,8 @@
  */
 package sisfomanagementproyek;
 
+import java.util.Date;
+
 /**
  *
  * @author Notonogoro
@@ -20,23 +22,29 @@ package sisfomanagementproyek;
 
 	public void createProyek(String namaProyek,Date deadline){
             //me-create obyek proyek dan menginputkannya di array proyek,lalu menambahkan numProyek, dibentuk proyek bila namaProyek belum pernah ada dan numProyek < maxProyek
-		if(numProyek<10){
-			proyek[numProyek]=p;
-			numProyek++;
-		}
+            if(numProyek<10){
+                proyek[numProyek]= new Proyek(namaProyek,deadline);
+                numProyek++;
+            } else System.out.println("Proyek sudah melebihi batas");
 	}
         
         public Proyek getProyek(int index){
             //Mereturn proyek pada array proyek dengan nomor index
-			return Proyek[index];
-		}
+            if (index<=numProyek){
+                return proyek[index];
+            }else return null;
+	}
         
         public void deleteProyek(int index){
             //Menghapus proyek pada array proyek dengan nomor index lalu menyusun array proyek
-			for (i=index;i<numProyek;i++){
-			Proyek[i]=Proyek[i+1]
-		}
-		Proyek[numProyek]=null;
-		numProyek--;
-		}
-}
+           if(index<=numProyek){
+               if(index!=numProyek){
+                    for (int i=index;i<numProyek;i++){
+			proyek[i]=proyek[i+1];
+                    }
+               }
+               proyek[numProyek]=null;
+               numProyek--;
+            }else System.out.println("Mohon input indexProyek tidak melebihi "+numProyek);
+	}
+    }
