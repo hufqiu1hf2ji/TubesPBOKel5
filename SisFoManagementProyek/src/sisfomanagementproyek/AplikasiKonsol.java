@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sisfomanagementproyek;
+package simpanan;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -243,7 +243,6 @@ public class AplikasiKonsol {
     public String[][] menuDetailProyekProgrammer(int indexProyek) { //DetailProyek untuk Programmer
         Proyek[] t = arProyekProgrammer(p);
         pro = t[indexProyek];
-        if(pro!=null){
         String[][] ar = new String[pro.getSizeTugas()][4];
         ar[0][0] = pro.getNamaProyek();
         ar[0][1] = sdf.format(pro.getDeadline());
@@ -254,14 +253,11 @@ public class AplikasiKonsol {
             ar[i][1] = Integer.toString(pro.getTugas(i).getStatus());
         }
         return ar;
-        }else return null;
     }
 
     public Tugas menuSetStatusTugas(int indexTugas) {
-        if(pro.getTugas(indexTugas)!=null){
         pro.getTugas(indexTugas).setStatus(1);
         return pro.getTugas(indexTugas);
-        }else return null;
     }
 
     public Proyek searchProyek(int index) { //ManajerProyek
@@ -274,12 +270,9 @@ public class AplikasiKonsol {
     }
 
     public Proyek menuRemoveProyek(int index) {
-        
         Proyek temp = mp.getProyek(index);
-        if(temp!=null){
         mp.deleteProyek(index);
-        return temp;}
-        else return null;
+        return temp;
     }
 
     public String[][] menuDetailProyek(int indexProyek) { //ManajerProyek
@@ -395,10 +388,9 @@ public class AplikasiKonsol {
 
     public Programmer menuAddProgrammer(String[][] ar, int indexProgrammer) { //menuViewProyek - >  listProgrammerTersedia
         Programmer temp = searchProgrammer(ar[indexProgrammer][1]);
-        if(temp!=null){
+        
         pro.addProgrammer(temp);
         return temp;
-        } else return null;
     }
 
     /*public Programmer menuRemoveProgrammer(int indexProgrammer, int indexProyek) { //menuViewProgrammerMP
@@ -408,10 +400,8 @@ public class AplikasiKonsol {
     }*/
     public Programmer menuRemoveProgrammer(int indexProgrammer) { //menuViewProgrammerMP
         Programmer temp = pro.getProgrammer(indexProgrammer);
-        if(temp!=null){
         pro.removeProgrammer(indexProgrammer);
         return temp;
-        }else return null;
     }
 
     public Programmer menuLogoutProgrammer() {
@@ -703,8 +693,62 @@ public class AplikasiKonsol {
                     }
                     break;
                 case 2:
+                    int pil2;
+                    System.out.print("Input ID Programmer");
+                    in.nextLine();
+                    System.out.println("ID: ");
+                    Id = in.nextLine();
+                    if (menuSearchProgrammer(id) != null) {
+                        int pil1 = -1;
+                        do {
+                            ar2 = menuViewProyekProgrammer();
+                            System.out.println("Selamat Datang Programmer " + p.getNama());
+                            System.out.println("--------------------------------------------------");
 
+                            if (ar2.length != 0) {
+                                System.out.println("Daftar Proyek Programmer");
+                                System.out.println("---------------------------");
+                                System.out.println("No  Keterangan");
+                                for (int i = 0; i < ar2.length; i++) {
+                                    System.out.print(i);
+                                    System.out.println("   Nama Proyek       : " + ar2[i][0]);
+                                    System.out.println("   Jumlah Programmer : " + ar2[i][1]);
+                                    System.out.println("   Tugas Aktif       : " + ar2[i][2]);
+                                    System.out.println("   Tugas Selesai     : " + ar2[i][3]);
+                                    System.out.println("   Deadline Proyek   : " + ar2[i][4]);
+                                    System.out.println("");
+                                }
+                            }
+                            
+                            System.out.println("Menu Programmer");
+                            System.out.println("1. Set Status Tugas");
+                            System.out.println("Masukkan pilihan: ")
+                            pil2 = in.nextInt();
+                            switch (pil2) {
+                            case 1:
+                                int pilihan=-1;
+                                System.out.print("Input Index Proyek :");
+                                pilihan = in.nextInt();
+                                ar2=menuDetailProyekProgrammer(pilihan);
+                                if(ar2!=null){
+                                    for(int i=1; i<ar2; i++){
+                                        System.out.print(i);
+                                        System.out.println(" Nama Tugas :"+ar2[i][0]);
+                                        System.out.println(" Status     :"+ar2[i][1]);
+                                    }
+                                }
+                                
+                            case 2:
+                                System.out.println("Input index ")
+                                int pilihan=-1;
+                                pilihan=in.nextInt();
+                                Tugas tempTs=menuSetStatusTugas(indexTugas);
+                                if(tempTs!=null){
+                                    System.out.println("Berhasil");
+                                }else System.out.println("Gagal");
                     break;
+                            }
+                    
                 case 3:
                     int pil3;
                     do {
