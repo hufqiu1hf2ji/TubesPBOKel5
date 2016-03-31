@@ -242,8 +242,9 @@ public class AplikasiKonsol {
 
     public String[][] menuDetailProyekProgrammer(int indexProyek) { //DetailProyek untuk Programmer
         Proyek[] t = arProyekProgrammer(p);
+        if(indexProyek<t.length){
         pro = t[indexProyek];
-        if(pro!=null){
+        
         String[][] ar = new String[pro.getSizeTugas()][4];
         ar[0][0] = pro.getNamaProyek();
         ar[0][1] = sdf.format(pro.getDeadline());
@@ -258,14 +259,16 @@ public class AplikasiKonsol {
     }
 
     public Tugas menuSetStatusTugas(int indexTugas) {
-        if(pro.getTugas(indexTugas)!=null){
+        if(indexTugas<pro.getSizeTugas()){
         pro.getTugas(indexTugas).setStatus(1);
         return pro.getTugas(indexTugas);
         }else return null;
     }
 
     public Proyek searchProyek(int index) { //ManajerProyek
+       if(index<mp.getSizeProyek()){
         return mp.getProyek(index);
+       }else return null;
     }
 
     public Proyek menuCreateProyek(String namaProyek, Date deadline) {
@@ -274,18 +277,19 @@ public class AplikasiKonsol {
     }
 
     public Proyek menuRemoveProyek(int index) {
-        
+        if(index<mp.getSizeProyek()){
         Proyek temp = mp.getProyek(index);
-        if(temp!=null){
+        
         mp.deleteProyek(index);
         return temp;}
         else return null;
     }
 
     public String[][] menuDetailProyek(int indexProyek) { //ManajerProyek
+        if(indexProyek<mp.getSizeProyek()){
         pro = searchProyek(indexProyek);
-        if(pro!=null){
-        String[][] ar = new String[pro.getSizeTugas() + 1][4];
+        
+        String[][] ar = new String[pro.getSizeTugas()][4];
         if (pro != null) {
             ar[0][0] = pro.getNamaProyek();
             ar[0][1] = sdf.format(pro.getDeadline());
@@ -308,9 +312,11 @@ public class AplikasiKonsol {
     }
 
     public Tugas menuCreateTugas(String namaTugas, int indexPelaksana) {
+        if(indexPelaksana<pro.getSizeProgrammer()){
         pro.createTugas(namaTugas);
-        pro.getTugas(pro.getSizeTugas() - 1).setPelaksana(pro.getProgrammer(indexPelaksana - 1));
-        return pro.getTugas(pro.getSizeTugas() - 1);
+        pro.getTugas(pro.getSizeTugas()-1).setPelaksana(pro.getProgrammer(indexPelaksana));
+        return pro.getTugas(pro.getSizeTugas()-1);
+        }else return null;
     }
 
     public Tugas menuRemoveTugas(int index) {
@@ -407,6 +413,7 @@ public class AplikasiKonsol {
         return temp;
     }*/
     public Programmer menuRemoveProgrammer(int indexProgrammer) { //menuViewProgrammerMP
+        
         Programmer temp = pro.getProgrammer(indexProgrammer);
         if(temp!=null){
         pro.removeProgrammer(indexProgrammer);
@@ -558,7 +565,7 @@ public class AplikasiKonsol {
                                                 System.out.println("Daftar Tugas");
                                                 System.out.println("---------------------------");
                                                 System.out.println("No  Keterangan");
-                                                for (int i = 0; i < ar2.length; i++) {
+                                                for (int i = 1; i < ar2.length; i++) {
                                                     System.out.print(i);
                                                     System.out.println("   Nama Tugas         : " + ar2[i][0]);
                                                     System.out.println("   Pelaksana           : " + ar2[i][1]);
@@ -604,7 +611,8 @@ public class AplikasiKonsol {
                                                         }
                                                     } while (ceker == false);
                                                     ceker = false;
-                                                    menuCreateTugas(nama);
+                                                    tempT = menuCreateTugas(nama);
+                                                    System.out.println(tempT.getNamaTugas());
                                                     nama = "";
                                                     break;
                                                 case 2:
@@ -703,12 +711,13 @@ public class AplikasiKonsol {
                     }
                     break;
                 case 2:
+                    
                     int pil2;
                     System.out.print("Input ID Programmer");
                     in.nextLine();
                     System.out.println("ID: ");
                     Id = in.nextLine();
-                    if (menuSearchProgrammer(id) != null) {
+                    if (menuSearchProgrammer(Id) != null) {
                         int pil1 = -1;
                         do {
                             ar2 = menuViewProyekProgrammer();
@@ -732,7 +741,8 @@ public class AplikasiKonsol {
                             
                             System.out.println("Menu Programmer");
                             System.out.println("1. Set Status Tugas");
-                            System.out.println("Masukkan pilihan: ")
+                            System.out.println("2. Logout");
+                            System.out.println("Masukkan pilihan: ");
                             pil2 = in.nextInt();
                             switch (pil2) {
                             case 1:
@@ -741,23 +751,28 @@ public class AplikasiKonsol {
                                 pilihan = in.nextInt();
                                 ar2=menuDetailProyekProgrammer(pilihan);
                                 if(ar2!=null){
-                                    for(int i=1; i<ar2; i++){
+                                    for(int i=1; i<ar2.length; i++){
                                         System.out.print(i);
                                         System.out.println(" Nama Tugas :"+ar2[i][0]);
                                         System.out.println(" Status     :"+ar2[i][1]);
                                     }
                                 }
                                 
-                            case 2:
-                                System.out.println("Input index ")
-                                int pilihan=-1;
+                            
+                                System.out.println("Input index ");
+                                pilihan=-1;
                                 pilihan=in.nextInt();
-                                Tugas tempTs=menuSetStatusTugas(indexTugas);
+                                Tugas tempTs=menuSetStatusTugas(pilihan);
                                 if(tempTs!=null){
                                     System.out.println("Berhasil");
                                 }else System.out.println("Gagal");
-                    break;
+                           break;
+                            case 2:
+                                menuLogoutProgrammer();
+                                break;
                             }
+                        }while(pil2!=2);
+                    }
                 case 3:
                     int pil3;
                     do {
