@@ -703,8 +703,61 @@ public class AplikasiKonsol {
                     }
                     break;
                 case 2:
+                    int pil2;
+                    System.out.print("Input ID Programmer");
+                    in.nextLine();
+                    System.out.println("ID: ");
+                    Id = in.nextLine();
+                    if (menuSearchProgrammer(id) != null) {
+                        int pil1 = -1;
+                        do {
+                            ar2 = menuViewProyekProgrammer();
+                            System.out.println("Selamat Datang Programmer " + p.getNama());
+                            System.out.println("--------------------------------------------------");
 
+                            if (ar2.length != 0) {
+                                System.out.println("Daftar Proyek Programmer");
+                                System.out.println("---------------------------");
+                                System.out.println("No  Keterangan");
+                                for (int i = 0; i < ar2.length; i++) {
+                                    System.out.print(i);
+                                    System.out.println("   Nama Proyek       : " + ar2[i][0]);
+                                    System.out.println("   Jumlah Programmer : " + ar2[i][1]);
+                                    System.out.println("   Tugas Aktif       : " + ar2[i][2]);
+                                    System.out.println("   Tugas Selesai     : " + ar2[i][3]);
+                                    System.out.println("   Deadline Proyek   : " + ar2[i][4]);
+                                    System.out.println("");
+                                }
+                            }
+                            
+                            System.out.println("Menu Programmer");
+                            System.out.println("1. Set Status Tugas");
+                            System.out.println("Masukkan pilihan: ")
+                            pil2 = in.nextInt();
+                            switch (pil2) {
+                            case 1:
+                                int pilihan=-1;
+                                System.out.print("Input Index Proyek :");
+                                pilihan = in.nextInt();
+                                ar2=menuDetailProyekProgrammer(pilihan);
+                                if(ar2!=null){
+                                    for(int i=1; i<ar2; i++){
+                                        System.out.print(i);
+                                        System.out.println(" Nama Tugas :"+ar2[i][0]);
+                                        System.out.println(" Status     :"+ar2[i][1]);
+                                    }
+                                }
+                                
+                            case 2:
+                                System.out.println("Input index ")
+                                int pilihan=-1;
+                                pilihan=in.nextInt();
+                                Tugas tempTs=menuSetStatusTugas(indexTugas);
+                                if(tempTs!=null){
+                                    System.out.println("Berhasil");
+                                }else System.out.println("Gagal");
                     break;
+                            }
                 case 3:
                     int pil3;
                     do {
