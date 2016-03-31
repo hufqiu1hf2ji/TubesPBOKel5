@@ -20,16 +20,20 @@ public class Tugas {
         status = 0;
     }
 
-    public void setPelaksana(Programmer pelaksana, Proyek p) {
+    /*public void setPelaksana(Programmer pelaksana, Proyek p) {  //TARUH DIAPLIKASIKONSOL
         if(pelaksana.getProgrammerDalamProyek(p) && cekTugasDalamProyek(p)){
             this.pelaksana = pelaksana;
-            System.out.println("![SUKSES]-Tugas ["+this.namaTugas+"] telah di tambahkan ke programmer "+pelaksana.getNama());
-        } else {
-            System.out.println("![GAGAL]-Programmer "+pelaksana.getNama()+" tidak terdaftar di proyek "+p.getNamaProyek());
+        }
+    }*/
+    
+    public void setPelaksana(Programmer pelaksana){
+        if(this.status==0 && pelaksana !=null){
+            this.pelaksana = pelaksana;
         }
     }
     
-    public boolean cekTugasDalamProyek(Proyek p){
+    /*
+    public boolean cekTugasDalamProyek(Proyek p){ //TARUH DIAPLIKASI KONSOL
         boolean t=false;
         for(int i =0 ; i<p.getNumTugas();i++){
             if(p.getTugas(i).equals(this)){
@@ -37,7 +41,12 @@ public class Tugas {
             }
         }
         return t;
-    }
+//    
+    
+    }*/
+    
+    
+    
     public String getNamaTugas() {
         return namaTugas;
     }

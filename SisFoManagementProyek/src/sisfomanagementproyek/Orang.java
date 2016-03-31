@@ -15,12 +15,16 @@ public abstract class Orang {
     private String alamat;
     private String telepon;
     private String jenisKelamin;
+    private String id;
+    private String pw;
 
-    public Orang(String nama, String jenisKelamin, String telepon, String alamat) {
-        this.nama = nama;
-        this.jenisKelamin = jenisKelamin;
-        this.telepon = telepon;
-        this.alamat = alamat;
+    public Orang(String nama, String jenisKelamin, String telepon, String alamat,String Id,String Password) {
+        setNama(nama);
+        setJenisKelamin(jenisKelamin);
+        setTelepon(telepon);
+        setAlamat(alamat);
+        setId(Id);
+        setPassword(Password);
     }
 
     public void setNama(String nama) {
@@ -54,6 +58,21 @@ public abstract class Orang {
     public String getJenisKelamin() {
         return jenisKelamin;
     }
-
+    
+    public String getID(){
+        return id;
+    }
+    
+    public void setId(String id){
+        this.id = id;
+    }
+    
+    public void setPassword(String pw){
+        this.pw = pw;
+    }
+    
+    public String getPassword(){
+        return pw;
+    }
 }
 

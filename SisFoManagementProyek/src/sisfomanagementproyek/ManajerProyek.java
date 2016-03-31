@@ -5,6 +5,7 @@
  */
 package sisfomanagementproyek;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,50 +14,43 @@ import java.util.Date;
  */
 public class ManajerProyek extends Orang {
 
-    private Proyek[] proyek;
-    private int numProyek = 0;
+    //private Proyek[] proyek;
+    private ArrayList<Proyek> proyek = new ArrayList<Proyek>();
 
-    public ManajerProyek(String nama, String jenisKelamin, String telepon, String alamat) {
-        super(nama, jenisKelamin, telepon, alamat);
-        proyek = new Proyek[10];
+    public ManajerProyek(String nama, String jenisKelamin, String telepon, String alamat,String Id,String Password) {
+        super(nama, jenisKelamin, telepon, alamat, Id, Password);
+        //proyek = new Proyek[10];
     }
 
-    public ManajerProyek(String nama, String jenisKelamin, String telepon, String alamat, int maxProyek) {
-        super(nama, jenisKelamin, telepon, alamat);
-        proyek = new Proyek[maxProyek];
-    }
+   /* public ManajerProyek(String nama, String jenisKelamin, String telepon, String alamat, String Id,String Password, int maxProyek) {
+        super(nama, jenisKelamin, telepon, alamat, Id,Password);
+        proyek.ensureCapacity(maxProyek);
+        //proyek = new Proyek[maxProyek];
+    }*/
 
     public void createProyek(String namaProyek, Date deadline) {
-        if (numProyek < proyek.length) {
-            proyek[numProyek] = new Proyek(namaProyek, deadline);
-            numProyek++;
-            System.out.println("![SUKSES]-Proyek " + namaProyek + " berhasil ditambahkan.");
-        } else {
-            System.out.println("![INFO]-Gagal.Proyek sudah melebihi batas");
-        }
+           // proyek[numProyek] = new Proyek(namaProyek, deadline);
+            proyek.add(new Proyek(namaProyek,deadline));
     }
 
-    public void createProyek(String namaProyek, Date deadline, int maxTugas) {
+    /*public void createProyek(String namaProyek, Date deadline, int maxTugas) {
         if (numProyek < proyek.length) {
             proyek[numProyek] = new Proyek(namaProyek, deadline, maxTugas);
             numProyek++;
-            System.out.println("![SUKSES]-Proyek " + namaProyek + " berhasil ditambahkan.");
-        } else {
-            System.out.println("![INFO]-Gagal. Proyek sudah melebihi batas");
         }
-    }
+    }*/
 
     public Proyek getProyek(int index) {
-        if (index <= numProyek) {
-            return proyek[index];
-        } else {
-            return null;
-        }
+            return proyek.get(index);
     }
+    
+
 
     public void deleteProyek(int index) {
-        if ((index < numProyek) && (index >= 0)) {
-            System.out.println("![SUKSES]-Proyek "+proyek[index].getNamaProyek() + " telah terhapus");
+        if(index<proyek.size() && index>-1){
+            proyek.remove(index);
+        } 
+       /* if ((index < numProyek) && (index >= 0)) {
             proyek[index] = null;
             //mekanisme penggeseran
             for (int i = index; i < numProyek; i++) {
@@ -64,17 +58,13 @@ public class ManajerProyek extends Orang {
             }
             proyek[numProyek]=null;
             numProyek--;
-            if (numProyek == 0) {
-                System.out.println("![INFO]-List Proyek Manager Proyek habis.");
-            }
-
-        } else {
-            System.out.println("![INFO]-Gagal.Tidak ada proyek yang terdeteksi");
-        }
+        } */
     }
 
-    public int getNumProyek() {
-        return numProyek;
+    public int getSizeProyek() {
+        return proyek.size();
     }
+
+    
 
 }
