@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sisfomanagementproyek;
+package Model;
 
 /**
  *
@@ -12,7 +12,7 @@ package sisfomanagementproyek;
 public class Tugas {
 
     private String namaTugas;
-    private Programmer pelaksana;
+    private Programmer pelaksana=null;
     private int status;
 
     public Tugas(String namaTugas) {

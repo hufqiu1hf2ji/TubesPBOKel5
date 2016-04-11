@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sisfomanagementproyek;
+package Model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,7 +59,11 @@ public class Proyek {
             if (temp!=-1){
                 tugas.get(temp).setPelaksana(null);
             }*/
+           for(int i = 0; i <tugas.size();i++){
+            removeTugas(searchPelaksana(programmer.get(indexProgrammer)));
+           }
             programmer.remove(indexProgrammer);
+            
         }
       /*  if ((indexProgrammer < numProgrammer) && (indexProgrammer >= 0)) {
            for (int i = 0; i < numTugas; i++) {

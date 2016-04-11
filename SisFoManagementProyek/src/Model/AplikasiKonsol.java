@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sisfomanagementproyek;
+package Model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -100,9 +100,10 @@ public class AplikasiKonsol {
     public int cekTugasSelesai(Programmer p, Proyek x) {
         int temp = 0;
         for (int i = 0; i < x.getSizeTugas(); i++) {
+            if(x.getTugas(i).getPelaksana()!=null){
             if (x.getTugas(i).getPelaksana().equals(p) && x.getTugas(i).getStatus() != 0) {
                 temp++;
-            }
+            }}
         }
         return temp;
     }
@@ -232,15 +233,16 @@ public class AplikasiKonsol {
     public String[][] menuViewProyekProgrammer() { //SearchProgrammer untuk Programmer
         String[][] ar = new String[hitungProyekProgrammer(p)][5];
         Proyek[] temp = arProyekProgrammer(p);
+        if(hitungProyekProgrammer(p)>0){
         for (int i = 0; i < hitungProyekProgrammer(p); i++) {
             ar[i][0] = temp[i].getNamaProyek();
             ar[i][1] = Integer.toString(temp[i].getSizeProgrammer());
             ar[i][2] = Integer.toString(cekTugasProgrammer((p), temp[i]));
-            ar[i][3] = Integer.toString(cekTugasSelesai(p, temp[i]));
+            ar[i][3] = Integer.toString(cekTugasSelesai((p), temp[i]));
             ar[i][4] = sdf.format(temp[i].getDeadline());
 
         }
-        return ar;
+        return ar;}else return null;
     }
 
     public String[][] menuDetailProyekProgrammer(int indexProyek) { //DetailProyek untuk Programmer
@@ -255,8 +257,8 @@ public class AplikasiKonsol {
             ar[0][2] = Integer.toString(pro.getSizeProgrammer());
             ar[0][3] = Integer.toString(pro.getSizeTugas());
             for (int i = 1; i <= pro.getSizeTugas(); i++) {
-                ar[i][0] = pro.getTugas(i).getNamaTugas();
-                ar[i][1] = Integer.toString(pro.getTugas(i).getStatus());
+                ar[i][0] = pro.getTugas(i-1).getNamaTugas();
+                ar[i][1] = Integer.toString(pro.getTugas(i-1).getStatus());
             }
             return ar;
         } else {
@@ -265,12 +267,14 @@ public class AplikasiKonsol {
     }
 
     public Tugas menuSetStatusTugas(int indexTugas) {
-        if (indexTugas < pro.getSizeTugas()) {
+        if (indexTugas < pro.getSizeTugas() && indexTugas>-1) {
+            if(indexTugas==pro.searchPelaksana(p)){
             pro.getTugas(indexTugas).setStatus(1);
             return pro.getTugas(indexTugas);
-        } else {
-            return null;
+            }
         }
+            return null;
+        
     }
 
     public Proyek searchProyek(int index) { //ManajerProyek
@@ -341,7 +345,7 @@ public class AplikasiKonsol {
     }
 
     public Tugas menuRemoveTugas(int index) {
-        if (index < pro.getSizeTugas() && index>0) {
+        if (index < pro.getSizeTugas() && index>-1) {
             Tugas temp = pro.getTugas(index);
             pro.removeTugas(index);
             return temp;
@@ -405,7 +409,7 @@ public class AplikasiKonsol {
         for (int i = 0; i < daftarProgrammer.size(); i++) {
             if (pro.getSizeProgrammer() != 0) {
                 for (int j = 0; j < pro.getSizeProgrammer(); j++) {
-                    if (daftarProgrammer.get(i) != pro.getProgrammer(j)) {
+                    if (!daftarProgrammer.get(i).equals(pro.getProgrammer(j))) {
                         ar[i][0] = daftarProgrammer.get(i).getNama();
                         ar[i][1] = daftarProgrammer.get(i).getID();
                         ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
@@ -422,15 +426,13 @@ public class AplikasiKonsol {
     }
 
     public Programmer menuAddProgrammer(String[][] ar, int indexProgrammer) { //menuViewProyek - >  listProgrammerTersedia
-        if(indexProgrammer<daftarProgrammer.size() && indexProgrammer>-1){
+        
         Programmer temp = searchProgrammer(ar[indexProgrammer][1]);
-        
+        if(temp!=null){
             pro.addProgrammer(temp);
-            return temp;
-        } else {
-            return null;
-        }
-        
+
+        } 
+        return temp;
     }
 
     /*public Programmer menuRemoveProgrammer(int indexProgrammer, int indexProyek) { //menuViewProgrammerMP
@@ -578,11 +580,10 @@ public class AplikasiKonsol {
                                     tempC2 = in.nextInt();
 
                                     ar2 = menuDetailProyek(tempC2);
-                                    System.out.println(pro.getNamaProyek());
-                                    if (ar2.length != 0) {
+                                    if (ar2 != null) {
                                         do {
-
                                             ar2 = menuDetailProyek(tempC2);
+                                    System.out.println(pro.getNamaProyek());
                                             System.out.print("Nama Proyek " + ar2[0][0]);
 
                                             System.out.println("     Deadline " + ar2[0][1]);
@@ -727,7 +728,7 @@ public class AplikasiKonsol {
                                             }
 
                                         } while (pil13 != 6);
-                                    }
+                                    }else System.out.println("Proyek tidak ada");
 
                                     break;
                                 case 4:
@@ -754,7 +755,7 @@ public class AplikasiKonsol {
                             System.out.println("Selamat Datang Programmer " + p.getNama());
                             System.out.println("--------------------------------------------------");
 
-                            if (ar2.length != 0) {
+                            if (ar2!=null) {
                                 System.out.println("Daftar Proyek Programmer");
                                 System.out.println("---------------------------");
                                 System.out.println("No  Keterangan");
@@ -797,14 +798,17 @@ public class AplikasiKonsol {
                                     } else {
                                         System.out.println("Gagal");
                                     
-                                    }}
+                                    }}else System.out.println("Tidak ditemukan");
                                     break;
                                 case 2:
                                     menuLogoutProgrammer();
                                     break;
                             }
                         } while (pil2 != 2);
+                    }else{
+                        System.out.println("ID Tidak ada");
                     }
+                    break;
                 case 3:
                     int pil3;
                     do {
