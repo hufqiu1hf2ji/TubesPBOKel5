@@ -20,6 +20,7 @@ public class AplikasiKonsol {
     private ArrayList<ManajerProyek> daftarManajerProyek = new ArrayList<ManajerProyek>();
     //private Programmer[] daftarProgrammer = new Programmer[200];
     private ArrayList<Programmer> daftarProgrammer = new ArrayList<Programmer>();
+    private ObjectManagerManager omm = new ObjectManagerManager(daftarManajerProyek);
     private int indexLogin = -1;
     private ManajerProyek mp;
     private Programmer p;
@@ -27,7 +28,7 @@ public class AplikasiKonsol {
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Scanner in = new Scanner(System.in);
     int pil;
-
+    
     public void addManajerProyek(ManajerProyek m) {
         daftarManajerProyek.add(m);
     }
@@ -405,23 +406,26 @@ public class AplikasiKonsol {
     }
 
     public String[][] listProgrammerTersediaP() {
-        String[][] ar = new String[daftarProgrammer.size() - pro.getSizeProgrammer()][3];
-        for (int i = 0; i < daftarProgrammer.size(); i++) {
-            if (pro.getSizeProgrammer() != 0) {
+        String[][] ar = new String[daftarProgrammer.size()-pro.getSizeProgrammer()][3];
+        if(ar.length!=0){
+        if (pro.getSizeProgrammer() != 0) {
+        int x=0;
+            for (int i = 0; i < daftarProgrammer.size(); i++) {
                 for (int j = 0; j < pro.getSizeProgrammer(); j++) {
                     if (!daftarProgrammer.get(i).equals(pro.getProgrammer(j))) {
-                        ar[i][0] = daftarProgrammer.get(i).getNama();
-                        ar[i][1] = daftarProgrammer.get(i).getID();
-                        ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
+                        ar[x][0] = daftarProgrammer.get(i).getNama();
+                        ar[x][1] = daftarProgrammer.get(i).getID();
+                        ar[x][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
+                        x++;
                     }
                 }
-            } else {
+            } 
+        }else for (int i = 0; i < daftarProgrammer.size(); i++){
                 ar[i][0] = daftarProgrammer.get(i).getNama();
                 ar[i][1] = daftarProgrammer.get(i).getID();
                 ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
             }
         }
-
         return ar;
     }
 
@@ -783,7 +787,7 @@ public class AplikasiKonsol {
                                     ar2 = menuDetailProyekProgrammer(pilihan);
                                     if (ar2 != null) {
                                         for (int i = 1; i < ar2.length; i++) {
-                                            System.out.print(i);
+                                            System.out.print(i-1);
                                             System.out.println(" Nama Tugas :" + ar2[i][0]);
                                             System.out.println(" Status     :" + ar2[i][1]);
                                         }
