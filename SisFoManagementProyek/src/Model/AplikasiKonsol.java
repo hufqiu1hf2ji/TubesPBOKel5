@@ -20,7 +20,7 @@ public class AplikasiKonsol {
     private ArrayList<ManajerProyek> daftarManajerProyek = new ArrayList<ManajerProyek>();
     //private Programmer[] daftarProgrammer = new Programmer[200];
     private ArrayList<Programmer> daftarProgrammer = new ArrayList<Programmer>();
-    private ObjectManagerManager omm = new ObjectManagerManager(daftarManajerProyek);
+
     private int indexLogin = -1;
     private ManajerProyek mp;
     private Programmer p;
@@ -28,15 +28,10 @@ public class AplikasiKonsol {
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Scanner in = new Scanner(System.in);
     int pil;
-    
-    public void addManajerProyek(ManajerProyek m) {
-        daftarManajerProyek.add(m);
-    }
 
-    public void addProgrammer(Programmer p) {
-        daftarProgrammer.add(p);
-    }
-
+    //FUNGSIONALITAS BERSAMA
+    //----------------------------------------------------------------------------------------------------
+    //Mencari Programmer di SISTEM berdasarkan ID - Penggunaan : Admin(Add Programmer) , Admin(Delete Programmer) , ManajerProyek (Add Programmer) , Login Programmer.
     public Programmer searchProgrammer(String id) {
         for (int i = 0; i < daftarProgrammer.size(); i++) {
             if (daftarProgrammer.get(i).getID().equals(id)) {
@@ -46,12 +41,7 @@ public class AplikasiKonsol {
         return null;
     }
 
-    public void deleteProgrammer(String id) {
-        if (searchProgrammer(id) != null) {
-            daftarProgrammer.remove(searchProgrammer(id));
-        }
-    }
-
+    //Mencari ManajerPRoyek di SISTEM berdasarkan ID - Penggunaan : Admin(Add Manajer Proyek) , Admin(Delete Manajer Proyek), Login Manajer Proyek. 
     public ManajerProyek searchManajerProyek(String id) {
         for (int i = 0; i < daftarManajerProyek.size(); i++) {
             if (daftarManajerProyek.get(i).getID().equals(id)) {
@@ -61,12 +51,20 @@ public class AplikasiKonsol {
         return null;
     }
 
-    public void deleteManajerProyek(String id) {
-        if (searchManajerProyek(id) != null) {
-            daftarManajerProyek.remove(searchManajerProyek(id));
+    //Mengecek Tugas yang belum selesai
+    public int jumlahTugasProgrammerS(Programmer p, Proyek x) {
+        int temp = 0;
+        for (int i = 0; i < x.getSizeTugas(); i++) {
+            if (x.getTugas(i).getPelaksana() != null) {
+                if (x.getTugas(i).getPelaksana().equals(p) && x.getTugas(i).getStatus() != 0) {
+                    temp++;
+                }
+            }
         }
+        return temp;
     }
 
+    //Menghitung jumlah Proyek pada Programmer di SISTEM - Penggunaan : Admin(Menu Utama) , ManajerProyek(AddProgrammer) , Programmer(Menu Utama). 
     public int hitungProyekProgrammer(Programmer p) {
         int temp = 0;
         for (int i = 0; i < daftarManajerProyek.size(); i++) {
@@ -81,8 +79,139 @@ public class AplikasiKonsol {
         return temp;
     }
 
-    public Proyek[] arProyekProgrammer(Programmer p) {
+    //Menghitung jumlah Tugas Programmer yang belum selesai di Proyek - Penggunaan : Programmer & ManajerProyek
+    public int jumlahTugasProgrammerBS(Programmer p, Proyek pro) {
         int temp = 0;
+        for (int j = 0; j < pro.getSizeTugas(); j++) {
+            if (pro.getTugas(j).getPelaksana() != null) {
+                if (pro.getTugas(j).getPelaksana().equals(p) && pro.getTugas(j).getStatus() != 1) {
+                    temp++;
+                }
+
+            }
+
+        }
+        return temp;
+    }
+
+    //CekID untuk pembuatan ManajerProyek atau Programmer supaya tidak memiliki ID yang sama.
+    public boolean cekID(String id) {
+        for (int i = 0; i < daftarManajerProyek.size(); i++) {
+            if (daftarManajerProyek.get(i).getID().equals(id)) {
+                return false;
+            }
+        }
+        for (int i = 0; i < daftarProgrammer.size(); i++) {
+            if (daftarProgrammer.get(i).getID().equals(id)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*
+    public int cekTugasProgrammer(Programmer p) { //cekTugasbelumselesai untuk detail programmer
+        int temp = 0;
+        for (int i = 0; i < mp.getSizeProyek(); i++) {
+            for (int j = 0; j < mp.getProyek(i).getSizeTugas(); j++) {
+                if (mp.getProyek(i).getTugas(j).getPelaksana().equals(p) && mp.getProyek(i).getTugas(j).getStatus() != 1) {
+                    temp++;
+                }
+            }
+        }
+        return temp;
+    }*/
+    //----------------------------------------------------------------------------------------------------
+    //FUNGSIONALITAS ADMIN.
+    //----------------------------------------------------------------------------------------------------
+    //Menambahkan ManajerProyek ke list sistem
+    public void addManajerProyek(ManajerProyek m) {
+        daftarManajerProyek.add(m);
+    }
+
+    //Menambahkan Programmer ke list sistem
+    public void addProgrammer(Programmer p) {
+        daftarProgrammer.add(p);
+    }
+
+    //Menghapus Programmer dari SISTEM berdasarkan ID
+    public void deleteProgrammer(String id) {
+        if (searchProgrammer(id) != null) {
+            daftarProgrammer.remove(searchProgrammer(id));
+        }
+    }
+
+    //Menghapus ManajerProyek dari SISTEM berdasarkan ID
+    public void deleteManajerProyek(String id) {
+        if (searchManajerProyek(id) != null) {
+            daftarManajerProyek.remove(searchManajerProyek(id));
+        }
+    }
+
+    //MENU ADMIN.
+    //Mengumpulkan List Programmer pada SISTEM.
+    public String[][] menuListProgrammer() {
+        if (daftarProgrammer.size() != 0) {
+            String[][] ar = new String[daftarProgrammer.size()][3];
+            for (int i = 0; i < daftarProgrammer.size(); i++) {
+                ar[i][0] = daftarProgrammer.get(i).getNama();
+                ar[i][1] = daftarProgrammer.get(i).getID();
+                ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
+            }
+            return ar;
+        } else {
+            return null;
+        }
+    }
+
+    //Mengumpulkan List ManajerProyek pada SISTEM.
+    public String[][] menuListManajerProyek() {
+        if (daftarManajerProyek.size() != 0) {
+            String[][] ar = new String[daftarManajerProyek.size()][3];
+            for (int i = 0; i < daftarManajerProyek.size(); i++) {
+                ar[i][0] = daftarManajerProyek.get(i).getNama();
+                ar[i][1] = daftarManajerProyek.get(i).getID();
+                ar[i][2] = Integer.toString(daftarManajerProyek.get(i).getSizeProyek());
+            }
+            return ar;
+        } else {
+            return null;
+        }
+    }
+
+    //Menambahkan ManajerProyek melalui fungsi addManajerProyek ke dalam SISTEM.
+    public ManajerProyek menuAddManajerProyek(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
+        ManajerProyek m = new ManajerProyek(nama, jenisKelamin, telepon, alamat, Id, Password);
+        addManajerProyek(m);
+        return m;
+    }
+
+    //Menambahkan Programmer melalui fungsi addProgrammer ke dalam SISTEM.
+    public Programmer menuAddProgrammer(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
+        Programmer p = new Programmer(nama, jenisKelamin, telepon, alamat, Id, Password);
+        addProgrammer(p);
+        return p;
+    }
+
+    //Menghapus ManajerProyek pada sistem melalui fungsi deleteManajerProyek.
+    public ManajerProyek menuRemoveManajerProyek(String id) {
+        ManajerProyek temp = searchManajerProyek(id);
+        deleteManajerProyek(id);
+        return temp;
+    }
+
+    //Menghapus Programmer pada sistem melalui fungsi deleteProgrammer.
+    public Programmer menuRemoveProgrammer(String id) {
+        Programmer p = searchProgrammer(id);
+        deleteProgrammer(id);
+        return p;
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    //FUNGSIONALITAS PROGRAMMER.
+    //----------------------------------------------------------------------------------------------------
+    //Mengumpulkan proyek-proyek dimana programmer ikut berkontribusi.
+    public Proyek[] arProyekProgrammer(Programmer p) {
         int s = 0;
         Proyek[] ar = new Proyek[hitungProyekProgrammer(p)];
         for (int i = 0; i < daftarManajerProyek.size(); i++) {
@@ -98,112 +227,15 @@ public class AplikasiKonsol {
         return ar;
     }
 
-    public int cekTugasSelesai(Programmer p, Proyek x) {
-        int temp = 0;
-        for (int i = 0; i < x.getSizeTugas(); i++) {
-            if(x.getTugas(i).getPelaksana()!=null){
-            if (x.getTugas(i).getPelaksana().equals(p) && x.getTugas(i).getStatus() != 0) {
-                temp++;
-            }}
-        }
-        return temp;
-    }
-
-    public int cekTugasProgrammer(Programmer p) { //cekTugasbelumselesai
-        int temp = 0;
-        for (int i = 0; i < mp.getSizeProyek(); i++) {
-            for (int j = 0; j < mp.getProyek(i).getSizeTugas(); j++) {
-                if (mp.getProyek(i).getTugas(j).getPelaksana().equals(p) && mp.getProyek(i).getTugas(j).getStatus() != 1) {
-                    temp++;
-                }
-            }
-        }
-        return temp;
-    }
-
-    public int cekTugasProgrammer(Programmer p, Proyek pro) { //cekTugasbelumselesai
-        int temp = 0;
-        for (int j = 0; j < pro.getSizeTugas(); j++) {
-            if (pro.getTugas(j).getPelaksana() != null) {
-                if (pro.getTugas(j).getPelaksana().equals(p) && pro.getTugas(j).getStatus() != 1) {
-                    temp++;
-                }
-
-            }
-
-        }
-        return temp;
-    }
-
+    //Mengeset status Tugas yang dikerjakan oleh Programmer.
     public void setStatusTugas(Programmer p, Tugas t) {
         if (t != null && t.getPelaksana() == p) {
             t.setStatus(1);
         }
     }
 
-    public boolean cekID(String id, String user) {
-        if (user.equals("mp")) {
-            for (int i = 0; i < daftarManajerProyek.size(); i++) {
-                if (daftarManajerProyek.get(i).getID().equals(id)) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public String[][] menuManajerProyek() {
-        String[][] ar = new String[daftarManajerProyek.size()][3];
-        for (int i = 0; i < daftarManajerProyek.size(); i++) {
-            ar[i][0] = daftarManajerProyek.get(i).getNama();
-            ar[i][1] = daftarManajerProyek.get(i).getID();
-            ar[i][2] = Integer.toString(daftarManajerProyek.get(i).getSizeProyek());
-        }
-        return ar;
-    }
-
-    public String[][] menuProgrammer() {
-        String[][] ar = new String[daftarProgrammer.size()][3];
-        for (int i = 0; i < daftarProgrammer.size(); i++) {
-            ar[i][0] = daftarProgrammer.get(i).getNama();
-            ar[i][1] = daftarProgrammer.get(i).getID();
-            ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
-        }
-        return ar;
-    }
-
-    public ManajerProyek menuAddManajerProyek(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
-        ManajerProyek m = new ManajerProyek(nama, jenisKelamin, telepon, alamat, Id, Password);
-        addManajerProyek(m);
-        return m;
-    }
-
-    public Programmer menuAddProgrammer(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
-        Programmer p = new Programmer(nama, jenisKelamin, telepon, alamat, Id, Password);
-        addProgrammer(p);
-        return p;
-    }
-
-    public ManajerProyek menuRemoveManajerProyek(String id) {
-        ManajerProyek temp = searchManajerProyek(id);
-        deleteManajerProyek(id);
-        return temp;
-    }
-
-    public Programmer menuRemoveProgrammer(String id) {
-        Programmer p = searchProgrammer(id);
-        deleteProgrammer(id);
-        return p;
-    }
-
-    public ManajerProyek menuSearchManajerProyek(String id) {
-        ManajerProyek temp = searchManajerProyek(id);
-        if (temp != null) {
-            mp = temp;
-        }
-        return temp;
-    }
-
+    //MENU Programmer.
+    //Menu LOGIN. TOLONG DIUBAH !
     public Programmer menuSearchProgrammer(String id) {
         Programmer temp = searchProgrammer(id);
         if (temp != null) {
@@ -212,54 +244,17 @@ public class AplikasiKonsol {
         return temp;
     }
 
-    public String[][] menuViewProyek() {//SearchProgrammer untuk ManajerProyek
-        pro = null;
-        String[][] ar = new String[mp.getSizeProyek()][4];
-        for (int i = 0; i < mp.getSizeProyek(); i++) {
-            int temp = 0;
-            for (int j = 0; j < mp.getProyek(i).getSizeTugas(); j++) {
-                if (mp.getProyek(i).getTugas(j).getStatus() != 1) {
-                    temp++;
-                }
-            }
-            ar[i][0] = mp.getProyek(i).getNamaProyek();
-            ar[i][1] = Integer.toString(mp.getProyek(i).getSizeProgrammer());
-            ar[i][2] = Integer.toString(temp);
-            ar[i][3] = sdf.format(mp.getProyek(i).getDeadline());
-        }
-        return ar;
-
-    }
-
-    public String[][] menuViewProyekProgrammer() { //SearchProgrammer untuk Programmer
-        String[][] ar = new String[hitungProyekProgrammer(p)][5];
-        Proyek[] temp = arProyekProgrammer(p);
-        if(hitungProyekProgrammer(p)>0){
-        for (int i = 0; i < hitungProyekProgrammer(p); i++) {
-            ar[i][0] = temp[i].getNamaProyek();
-            ar[i][1] = Integer.toString(temp[i].getSizeProgrammer());
-            ar[i][2] = Integer.toString(cekTugasProgrammer((p), temp[i]));
-            ar[i][3] = Integer.toString(cekTugasSelesai((p), temp[i]));
-            ar[i][4] = sdf.format(temp[i].getDeadline());
-
-        }
-        return ar;}else return null;
-    }
-
-    public String[][] menuDetailProyekProgrammer(int indexProyek) { //DetailProyek untuk Programmer
-        
-        Proyek[] t = arProyekProgrammer(p);
-        if (indexProyek < t.length && indexProyek>-1) {
-            pro = t[indexProyek];
-
-            String[][] ar = new String[pro.getSizeTugas()+1][4];
-            ar[0][0] = pro.getNamaProyek();
-            ar[0][1] = sdf.format(pro.getDeadline());
-            ar[0][2] = Integer.toString(pro.getSizeProgrammer());
-            ar[0][3] = Integer.toString(pro.getSizeTugas());
-            for (int i = 1; i <= pro.getSizeTugas(); i++) {
-                ar[i][0] = pro.getTugas(i-1).getNamaTugas();
-                ar[i][1] = Integer.toString(pro.getTugas(i-1).getStatus());
+    //Mengumpulkan data namaProyek,jumlahProgrammer,tugas belum selesai oleh si programmer,tugas selesai programmer,dan deadline setiap proyek yang di pimpin oleh manager proyek.
+    public String[][] menuViewProyekProgrammer() {
+        if (hitungProyekProgrammer(p) > 0) {
+            String[][] ar = new String[hitungProyekProgrammer(p)][5];
+            Proyek[] temp = arProyekProgrammer(p);
+            for (int i = 0; i < hitungProyekProgrammer(p); i++) {
+                ar[i][0] = temp[i].getNamaProyek();
+                ar[i][1] = Integer.toString(temp[i].getSizeProgrammer());
+                ar[i][2] = Integer.toString(jumlahTugasProgrammerBS((p), temp[i]));
+                ar[i][3] = Integer.toString(jumlahTugasProgrammerS((p), temp[i]));
+                ar[i][4] = sdf.format(temp[i].getDeadline());
             }
             return ar;
         } else {
@@ -267,47 +262,86 @@ public class AplikasiKonsol {
         }
     }
 
-    public Tugas menuSetStatusTugas(int indexTugas) {
-        if (indexTugas < pro.getSizeTugas() && indexTugas>-1) {
-            if(indexTugas==pro.searchPelaksana(p)){
-            pro.getTugas(indexTugas).setStatus(1);
-            return pro.getTugas(indexTugas);
-            }
-        }
-            return null;
-        
-    }
+    //Mengumpulkan data detail dari suatu proyek berdasarkan indexProyek.
+    public String[][] menuDetailProyekProgrammer(int indexProyek) { //DetailProyek untuk Programmer
 
-    public Proyek searchProyek(int index) { //ManajerProyek
-        if (index < mp.getSizeProyek()) {
-            return mp.getProyek(index);
-        } else {
-            return null;
-        }
-    }
-
-    public Proyek menuCreateProyek(String namaProyek, Date deadline) {
-        mp.createProyek(namaProyek, deadline);
-        return mp.getProyek(mp.getSizeProyek() - 1);
-    }
-
-    public Proyek menuRemoveProyek(int index) {
-        if (index < mp.getSizeProyek() && index>-1) {
-            Proyek temp = mp.getProyek(index);
-
-            mp.deleteProyek(index);
-            return temp;
-        } else {
-            return null;
-        }
-    }
-
-    public String[][] menuDetailProyek(int indexProyek) { //ManajerProyek
-        if (indexProyek < mp.getSizeProyek() && indexProyek>-1) {
-            pro = searchProyek(indexProyek);
+        Proyek[] t = arProyekProgrammer(p);
+        if (indexProyek < t.length && indexProyek > -1) {
+            pro = t[indexProyek];
 
             String[][] ar = new String[pro.getSizeTugas() + 1][4];
+            ar[0][0] = pro.getNamaProyek();
+            ar[0][1] = sdf.format(pro.getDeadline());
+            ar[0][2] = Integer.toString(pro.getSizeProgrammer());
+            ar[0][3] = Integer.toString(pro.getSizeTugas());
+            for (int i = 1; i <= pro.getSizeTugas(); i++) {
+                ar[i][0] = pro.getTugas(i - 1).getNamaTugas();
+                ar[i][1] = Integer.toString(pro.getTugas(i - 1).getStatus());
+            }
+            return ar;
+        } else {
+            return null;
+        }
+    }
+
+    //Mengeset status suatu Tugas dengan fungsi setStatus
+    public Tugas menuSetStatusTugas(int indexTugas) {
+        if (indexTugas < pro.getSizeTugas() && indexTugas > -1) {
+            setStatusTugas(p, pro.getTugas(indexTugas));
+            return pro.getTugas(indexTugas);
+        }
+        return null;
+
+    }
+
+    //Me-nullkan Programmer dan Proyek aktif.
+    public Programmer menuLogoutProgrammer() {
+        Programmer temp = p;
+        p = null;
+        pro = null;
+        return temp;
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    //MENU ManajerProyek.
+    //Menu LOGIN . TOLONG DIUBAH !
+    public ManajerProyek menuSearchManajerProyek(String id) {
+        ManajerProyek temp = searchManajerProyek(id);
+        if (temp != null) {
+            mp = temp;
+        }
+        return temp;
+    }
+
+    //Mengumpulkan data nama,jumlahprogrammer,tugas belum selesai,dan deadline setiap proyek yang di pimpin oleh manager proyek.
+    public String[][] menuViewProyek() {
+        if (mp.getSizeProyek() != 0) {
+            String[][] ar = new String[mp.getSizeProyek()][4];
+            for (int i = 0; i < mp.getSizeProyek(); i++) {
+                int temp = 0;
+                for (int j = 0; j < mp.getProyek(i).getSizeTugas(); j++) {
+                    if (mp.getProyek(i).getTugas(j).getStatus() != 1) {
+                        temp++;
+                    }
+                }
+                ar[i][0] = mp.getProyek(i).getNamaProyek();
+                ar[i][1] = Integer.toString(mp.getProyek(i).getSizeProgrammer());
+                ar[i][2] = Integer.toString(temp);
+                ar[i][3] = sdf.format(mp.getProyek(i).getDeadline());
+            }
+            return ar;
+        } else {
+            return null;
+        }
+
+    }
+
+    //Mengumpulkan data NamaProyek,Deadline,Size programmer,Size Tugas baik yang sudah selesai atau belum berdasarkan indexProyek.
+    public String[][] menuDetailProyek(int indexProyek) { //ManajerProyek
+        if (indexProyek < mp.getSizeProyek() && indexProyek > -1) {
+            pro = mp.getProyek(indexProyek);
             if (pro != null) {
+                String[][] ar = new String[pro.getSizeTugas() + 1][4];
                 ar[0][0] = pro.getNamaProyek();
                 ar[0][1] = sdf.format(pro.getDeadline());
                 ar[0][2] = Integer.toString(pro.getSizeProgrammer());
@@ -322,53 +356,160 @@ public class AplikasiKonsol {
                     }
                     ar[i][2] = Integer.toString(pro.getTugas(i - 1).getStatus());
                 }
+                return ar;
             }
+        }
+        return null;
+    }
 
-            return ar;
+    //Membuat Proyek berdasarkan ManajerProyek yang aktif.
+    public Proyek menuCreateProyek(String namaProyek, Date deadline) {
+        mp.createProyek(namaProyek, deadline);
+        return mp.getProyek(mp.getSizeProyek() - 1);
+    }
+
+    //Menghapus Proyek pada ManajerProyek yang aktif berdasarkan indexProyek
+    public Proyek menuRemoveProyek(int index) {
+        if (index < mp.getSizeProyek() && index > -1) {
+            Proyek temp = mp.getProyek(index);
+            mp.deleteProyek(index);
+            return temp;
         } else {
             return null;
         }
     }
 
+    //Menambahkan Tugas baru tanpa pelaksana
     public Tugas menuCreateTugas(String namaTugas) {
         pro.createTugas(namaTugas);
         return pro.getTugas(pro.getSizeTugas() - 1);
     }
 
+    //Menambahkan Tugas baru dengan Pelaksana
     public Tugas menuCreateTugas(String namaTugas, int indexPelaksana) {
-        if (indexPelaksana < pro.getSizeProgrammer() && indexPelaksana>-1) {
-            pro.createTugas(namaTugas);
+        pro.createTugas(namaTugas);
+        if (indexPelaksana < pro.getSizeProgrammer() && indexPelaksana > -1) {
             pro.getTugas(pro.getSizeTugas() - 1).setPelaksana(pro.getProgrammer(indexPelaksana));
-            return pro.getTugas(pro.getSizeTugas() - 1);
-        } else {
-            return null;
         }
+        return pro.getTugas(pro.getSizeTugas() - 1);
     }
 
+    //Menghapus Tugas di proyek aktif dengan indexTugas
     public Tugas menuRemoveTugas(int index) {
-        if (index < pro.getSizeTugas() && index>-1) {
+        if (index < pro.getSizeTugas() && index > -1) {
             Tugas temp = pro.getTugas(index);
             pro.removeTugas(index);
             return temp;
         } else {
             return null;
         }
-
     }
 
+    //Mengeset Tugas dengan indexTugas dan indexPelaksana pada proyek yang aktif.
+    public Tugas menuSetPelaksana(int indexPelaksana, int indexTugas) {
+        if (indexPelaksana < pro.getSizeProgrammer() && indexTugas < pro.getSizeTugas() && indexPelaksana > -1 && indexTugas > -1) {
+            pro.getTugas(indexTugas).setPelaksana(pro.getProgrammer(indexPelaksana));
+            return pro.getTugas(indexTugas);
+        } else {
+            return null;
+        }
+    }
+
+    //Mengumpulkan data NamaProgrammer,IDProgrammer,dan jumlahProyeknya Programmer pada proyek aktif.
+    public String[][] listProgrammerProyek() {
+        if (pro.getSizeProgrammer() != 0) {
+            String[][] ar = new String[pro.getSizeProgrammer()][3];
+            for (int j = 0; j < pro.getSizeProgrammer(); j++) {
+                ar[j][0] = pro.getProgrammer(j).getNama();
+                ar[j][1] = pro.getProgrammer(j).getID();
+                ar[j][2] = Integer.toString(hitungProyekProgrammer(pro.getProgrammer(j)));
+            }
+            return ar;
+        }
+        return null;
+    }
+
+    //Menambahkan Programmer pada proyek yang aktif berdasarkan indexProgrammer
+    public Programmer menuAddProgrammer(String[][] ar, int indexProgrammer) { //menuViewProyek - >  listProgrammerTersedia
+        Programmer temp = searchProgrammer(ar[indexProgrammer][1]);
+        if (temp != null) {
+            pro.addProgrammer(temp);
+        }
+        return temp;
+    }
+
+    //Menghapus Programmer pada proyek yang aktif berdasarkan indexProgrammer
+    public Programmer menuRemoveProgrammer(int indexProgrammer) { //menuViewProgrammerMP
+        if (indexProgrammer < pro.getSizeProgrammer() && indexProgrammer > -1) {
+            Programmer temp = pro.getProgrammer(indexProgrammer);
+
+            pro.removeProgrammer(indexProgrammer);
+            return temp;
+        } else {
+            return null;
+        }
+    }
+
+    //Mengumpulkan list Programmer yang belum ada didalam proyek aktif.
+    public String[][] listProgrammerTersediaP() {
+        if (daftarProgrammer.size() != 0) {
+            String[][] ar = new String[daftarProgrammer.size() - pro.getSizeProgrammer()][3];
+            if (ar.length != 0) {
+                if (pro.getSizeProgrammer() != 0) {
+                    int x = 0;
+                    for (int i = 0; i < daftarProgrammer.size(); i++) {
+                        for (int j = 0; j < pro.getSizeProgrammer(); j++) {
+                            if (!daftarProgrammer.get(i).equals(pro.getProgrammer(j))) {
+                                ar[x][0] = daftarProgrammer.get(i).getNama();
+                                ar[x][1] = daftarProgrammer.get(i).getID();
+                                ar[x][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
+                                x++;
+                            }
+                        }
+                    }
+                } else {
+                    for (int i = 0; i < daftarProgrammer.size(); i++) {
+                        ar[i][0] = daftarProgrammer.get(i).getNama();
+                        ar[i][1] = daftarProgrammer.get(i).getID();
+                        ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
+                    }
+                }
+                return ar;
+            }
+        }
+        return null;
+    }
+
+    //Me-nullkan ManajerProyek dan Proyek aktif.
+    public ManajerProyek menuLogoutManajerProyek() {
+        ManajerProyek temp = mp;
+        mp = null;
+        pro = null;
+        return temp;
+    }
+
+    //----------------------------------------------------------------------------------------------------
     public String[][] menuViewPelaksana(Proyek p) {
         String[][] ar = new String[p.getSizeProgrammer()][2];
         for (int i = 0; i < p.getSizeProgrammer(); i++) {
             ar[i][0] = p.getProgrammer(i).getNama();
-            ar[i][1] = Integer.toString(cekTugasProgrammer(p.getProgrammer(i)));
+            ar[i][1] = Integer.toString(jumlahTugasProgrammerBS(p.getProgrammer(i), p));
         }
         return ar;
     }
 
-    public Tugas menuSetPelaksana(int indexPelaksana, int indexTugas) {
-        if(indexPelaksana<pro.getSizeProgrammer() && indexTugas<pro.getSizeTugas() && indexPelaksana>-1 && indexTugas>-1){
-        pro.getTugas(indexTugas).setPelaksana(pro.getProgrammer(indexPelaksana));
-        return pro.getTugas(indexTugas);}else return null;
+    public String[][] menuViewProgrammerMP() {
+        String[][] ar = new String[jumlahProgrammer(mp)][5];
+        for (int i = 0; i < mp.getSizeProyek(); i++) {
+            for (int j = 0; j < mp.getProyek(i).getSizeProgrammer(); j++) {
+                ar[i][0] = mp.getProyek(i).getNamaProyek();
+                ar[i][1] = mp.getProyek(i).getProgrammer(i).getNama();
+                ar[i][2] = Integer.toString(jumlahTugasProgrammerBS(mp.getProyek(i).getProgrammer(j), mp.getProyek(i)));
+                ar[i][3] = Integer.toString(jumlahTugasProgrammerS(mp.getProyek(i).getProgrammer(j), mp.getProyek(i)));
+                ar[i][4] = sdf.format(mp.getProyek(i).getDeadline());
+            }
+        }
+        return ar;
     }
 
     public int jumlahProgrammer(ManajerProyek mp) {
@@ -379,96 +520,11 @@ public class AplikasiKonsol {
         return temp;
     }
 
-    public String[][] menuViewProgrammerMP() {
-        String[][] ar = new String[jumlahProgrammer(mp)][5];
-        for (int i = 0; i < mp.getSizeProyek(); i++) {
-            for (int j = 0; j < mp.getProyek(i).getSizeProgrammer(); j++) {
-                ar[i][0] = mp.getProyek(i).getNamaProyek();
-                ar[i][1] = mp.getProyek(i).getProgrammer(i).getNama();
-                ar[i][2] = Integer.toString(cekTugasProgrammer(mp.getProyek(i).getProgrammer(j), mp.getProyek(i)));
-                ar[i][3] = Integer.toString(cekTugasSelesai(mp.getProyek(i).getProgrammer(j), mp.getProyek(i)));
-                ar[i][4] = sdf.format(mp.getProyek(i).getDeadline());
-            }
-        }
-        return ar;
-    }
-
-    public String[][] listProgrammerTersedia() {
-        String[][] ar = new String[pro.getSizeProgrammer()][3];
-        for (int j = 0; j < pro.getSizeProgrammer(); j++) {
-            ar[j][0] = pro.getProgrammer(j).getNama();
-            ar[j][1] = pro.getProgrammer(j).getID();
-            ar[j][2] = Integer.toString(hitungProyekProgrammer(pro.getProgrammer(j)));
-
-        }
-
-        return ar;
-    }
-
-    public String[][] listProgrammerTersediaP() {
-        String[][] ar = new String[daftarProgrammer.size()-pro.getSizeProgrammer()][3];
-        if(ar.length!=0){
-        if (pro.getSizeProgrammer() != 0) {
-        int x=0;
-            for (int i = 0; i < daftarProgrammer.size(); i++) {
-                for (int j = 0; j < pro.getSizeProgrammer(); j++) {
-                    if (!daftarProgrammer.get(i).equals(pro.getProgrammer(j))) {
-                        ar[x][0] = daftarProgrammer.get(i).getNama();
-                        ar[x][1] = daftarProgrammer.get(i).getID();
-                        ar[x][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
-                        x++;
-                    }
-                }
-            } 
-        }else for (int i = 0; i < daftarProgrammer.size(); i++){
-                ar[i][0] = daftarProgrammer.get(i).getNama();
-                ar[i][1] = daftarProgrammer.get(i).getID();
-                ar[i][2] = Integer.toString(hitungProyekProgrammer(daftarProgrammer.get(i)));
-            }
-        }
-        return ar;
-    }
-
-    public Programmer menuAddProgrammer(String[][] ar, int indexProgrammer) { //menuViewProyek - >  listProgrammerTersedia
-        
-        Programmer temp = searchProgrammer(ar[indexProgrammer][1]);
-        if(temp!=null){
-            pro.addProgrammer(temp);
-
-        } 
-        return temp;
-    }
-
     /*public Programmer menuRemoveProgrammer(int indexProgrammer, int indexProyek) { //menuViewProgrammerMP
         Programmer temp = mp.getProyek(indexProyek).getProgrammer(indexProgrammer);
         mp.getProyek(indexProyek).removeProgrammer(indexProgrammer);
         return temp;
     }*/
-    public Programmer menuRemoveProgrammer(int indexProgrammer) { //menuViewProgrammerMP
-        if(indexProgrammer<pro.getSizeProgrammer() && indexProgrammer>-1){
-        Programmer temp = pro.getProgrammer(indexProgrammer);
-        
-            pro.removeProgrammer(indexProgrammer);
-            return temp;
-        } else {
-            return null;
-        }
-    }
-
-    public Programmer menuLogoutProgrammer() {
-        Programmer temp = p;
-        p = null;
-        pro = null;
-        return temp;
-    }
-
-    public ManajerProyek menuLogoutManajerProyek() {
-        ManajerProyek temp = mp;
-        mp = null;
-        pro = null;
-        return temp;
-    }
-
     public void MainMenu() {
         do {
             String input = null;
@@ -480,7 +536,7 @@ public class AplikasiKonsol {
             System.out.println("4. Keluar");
             System.out.print("Masukkan Pilihan Menu: ");
             String[][] ar2;
-            
+
             pil = in.nextInt();
             String nama = "",
                     jenisKelamin = "",
@@ -501,7 +557,7 @@ public class AplikasiKonsol {
                             System.out.println("Selamat Datang ManajerProyek " + mp.getNama());
                             System.out.println("-----------------------------------------------");
 
-                            if (ar2.length != 0) {
+                            if (ar2 != null) {
                                 System.out.println("Daftar Proyek");
                                 System.out.println("-------------");
                                 System.out.println("No  Keterangan");
@@ -544,11 +600,11 @@ public class AplikasiKonsol {
                                     int bln = -2;
                                     int hr = -2;
                                     in.nextLine();
-                                    
+
                                     System.out.print("Tahun : ");
-                                    
+
                                     thn = in.nextInt();
-                                    
+
                                     System.out.print("Bulan : ");
 
                                     bln = in.nextInt();
@@ -587,7 +643,7 @@ public class AplikasiKonsol {
                                     if (ar2 != null) {
                                         do {
                                             ar2 = menuDetailProyek(tempC2);
-                                    System.out.println(pro.getNamaProyek());
+                                            System.out.println(pro.getNamaProyek());
                                             System.out.print("Nama Proyek " + ar2[0][0]);
 
                                             System.out.println("     Deadline " + ar2[0][1]);
@@ -607,9 +663,10 @@ public class AplikasiKonsol {
                                                     System.out.println("");
                                                 }
                                             }
-                                            ar2 = listProgrammerTersedia();
 
-                                            if (ar2.length > 0) {
+                                            ar2 = listProgrammerProyek();
+
+                                            if (ar2 != null) {
                                                 System.out.println("Programmer dalam Proyek");
                                                 for (int i = 0; i < ar2.length; i++) {
                                                     System.out.print(i);
@@ -671,10 +728,10 @@ public class AplikasiKonsol {
 
                                                         System.out.println("");
                                                         System.out.println("Input Index Pelaksana>>");
-                                                         
+
                                                         System.out.println("Index : ");
                                                         tempil2 = in.nextInt();
-                                                        
+
                                                         tempT = menuSetPelaksana(tempil2, tempil);
                                                         if (tempT != null) {
                                                             System.out.println("Tugas " + tempT.getNamaTugas() + " berhasil diset");
@@ -687,7 +744,7 @@ public class AplikasiKonsol {
                                                     break;
                                                 case 4:
                                                     ar2 = listProgrammerTersediaP();
-                                                    if (ar2.length != 0) {
+                                                    if (ar2 != null) {
                                                         System.out.println("Daftar Programmer Tersedia");
                                                         System.out.println("---------------------------");
                                                         System.out.println("No  Keterangan");
@@ -720,7 +777,7 @@ public class AplikasiKonsol {
                                                     System.out.print("Index : ");
                                                     tempil = -2;
                                                     tempil = in.nextInt();
-                                                    
+
                                                     Programmer tempP = menuRemoveProgrammer(tempil);
                                                     if (tempP != null) {
                                                         System.out.println("Programmer " + tempP.getNama() + " berhasil dihapus");
@@ -732,7 +789,9 @@ public class AplikasiKonsol {
                                             }
 
                                         } while (pil13 != 6);
-                                    }else System.out.println("Proyek tidak ada");
+                                    } else {
+                                        System.out.println("Proyek tidak ada");
+                                    }
 
                                     break;
                                 case 4:
@@ -759,7 +818,7 @@ public class AplikasiKonsol {
                             System.out.println("Selamat Datang Programmer " + p.getNama());
                             System.out.println("--------------------------------------------------");
 
-                            if (ar2!=null) {
+                            if (ar2 != null) {
                                 System.out.println("Daftar Proyek Programmer");
                                 System.out.println("---------------------------");
                                 System.out.println("No  Keterangan");
@@ -787,37 +846,39 @@ public class AplikasiKonsol {
                                     ar2 = menuDetailProyekProgrammer(pilihan);
                                     if (ar2 != null) {
                                         for (int i = 1; i < ar2.length; i++) {
-                                            System.out.print(i-1);
+                                            System.out.print(i - 1);
                                             System.out.println(" Nama Tugas :" + ar2[i][0]);
                                             System.out.println(" Status     :" + ar2[i][1]);
                                         }
-                                    
 
-                                    System.out.println("Input index ");
-                                    pilihan = -1;
-                                    pilihan = in.nextInt();
-                                    Tugas tempTs = menuSetStatusTugas(pilihan);
-                                    if (tempTs != null) {
-                                        System.out.println("Berhasil");
+                                        System.out.println("Input index ");
+                                        pilihan = -1;
+                                        pilihan = in.nextInt();
+                                        Tugas tempTs = menuSetStatusTugas(pilihan);
+                                        if (tempTs != null) {
+                                            System.out.println("Berhasil");
+                                        } else {
+                                            System.out.println("Gagal");
+
+                                        }
                                     } else {
-                                        System.out.println("Gagal");
-                                    
-                                    }}else System.out.println("Tidak ditemukan");
+                                        System.out.println("Tidak ditemukan");
+                                    }
                                     break;
                                 case 2:
                                     menuLogoutProgrammer();
                                     break;
                             }
                         } while (pil2 != 2);
-                    }else{
+                    } else {
                         System.out.println("ID Tidak ada");
                     }
                     break;
                 case 3:
                     int pil3;
                     do {
-                        ar2 = menuManajerProyek();
-                        if (ar2.length != 0) {
+                        ar2 = menuListManajerProyek();
+                        if (ar2 != null) {
                             System.out.println("Daftar Manajer Proyek");
                             System.out.println("---------------------------");
                             System.out.println("No  Keterangan");
@@ -829,8 +890,8 @@ public class AplikasiKonsol {
                                 System.out.println("");
                             }
                         }
-                        ar2 = menuProgrammer();
-                        if (ar2.length != 0) {
+                        ar2 = menuListProgrammer();
+                        if (ar2 != null) {
                             System.out.println("Daftar Programmer");
                             System.out.println("-----------------");
                             System.out.println("No  Keterangan");
@@ -922,7 +983,7 @@ public class AplikasiKonsol {
                                     } else {
                                         ceker = true;
                                     }
-                                    
+
                                 } while (ceker == false);
                                 ceker = false;
                                 System.out.println("Input ID>>");
@@ -1072,6 +1133,6 @@ public class AplikasiKonsol {
                     } while (pil3 != 5);
                     break;
             }
-        } while (pil!= 4);
+        } while (pil != 4);
     }
 }
