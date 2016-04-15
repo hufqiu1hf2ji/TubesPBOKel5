@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Driver;
 
+import Controller.Controller;
+import Model.AplikasiKonsol;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,14 +14,16 @@ import java.util.Date;
  *
  * @author Notonogoro
  */
-public class SisFoManagementProyek{
+public class SisFoManagementProyek {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-            AplikasiKonsol coba = new AplikasiKonsol();
-            coba.MainMenu();
-        }
+        AplikasiKonsol coba = new AplikasiKonsol();
+        Controller c = new Controller(coba);
+        coba.MainMenu();
+      
+        
     }
-
+}
