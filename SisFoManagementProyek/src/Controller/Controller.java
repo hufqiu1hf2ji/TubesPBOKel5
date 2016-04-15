@@ -23,6 +23,7 @@ public class Controller implements ActionListener {
     private Login2 l;
     private DashboardAdmin dashAd;
     private String levelAktif = null;
+    private ControllerAdmin ca;
 
     public Controller(AplikasiKonsol model) {
         this.model = model;
@@ -72,7 +73,7 @@ public class Controller implements ActionListener {
                 if (levelAktif.equals("ad")) {
                     try {
                         model.menuLoginAdmin(user, pass);
-                        dashAd.setVisible(true);
+                        ca = new ControllerAdmin(model);
                         l.setVisible(false);
                         levelAktif = null;
                         l.dispose();
