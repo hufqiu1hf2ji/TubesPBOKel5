@@ -260,7 +260,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         return btnHapusPro;
     }
 
-    public JButton getBtnLogout() {
+    public Object getBtnLogout() {
         return btnLogout;
     }
 
