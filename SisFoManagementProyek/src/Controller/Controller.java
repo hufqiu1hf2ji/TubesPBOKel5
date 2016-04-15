@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.AplikasiKonsol;
+import View.DashboardAdmin;
 import View.Login1;
 import View.Login2;
 import java.awt.event.ActionEvent;
@@ -20,16 +21,21 @@ public class Controller implements ActionListener {
     private AplikasiKonsol model;
     private Login1 l1;
     private Login2 l;
-    private String levelAktif=null;
+    private DashboardAdmin dashAd;
+    private String levelAktif = null;
 
     public Controller(AplikasiKonsol model) {
         this.model = model;
         this.l1 = new Login1();
         this.l = new Login2();
+        this.dashAd = new DashboardAdmin();
         l1.setVisible(true);
         l1.addListener(this);
         l.setVisible(false);
         l.addListener(this);
+        dashAd.setVisible(false);
+        dashAd.addListener(this);
+
     }
 
     @Override
@@ -39,20 +45,44 @@ public class Controller implements ActionListener {
             l.setVisible(true);
             l1.setVisible(false);
             l1.dispose();
-            levelAktif="mp";
+            levelAktif = "mp";
         }
         if (source.equals(l1.getBtnProgrammer())) {
             l.setVisible(true);
             l1.setVisible(false);
             l1.dispose();
-            levelAktif="p";
+            levelAktif = "p";
         }
-        if (source.equals(l.getBtnBack())){
+        if (source.equals(l.getBtnBack())) {
             l1.setVisible(true);
             l.setVisible(false);
             l.dispose();
-            levelAktif=null;
+            levelAktif = null;
+        }
+        if (source.equals(l1.getBtnAdmin())) {
+            l.setVisible(true);
+            l1.setVisible(false);
+            l1.dispose();
+            levelAktif = "ad";
+        }
+        if (source.equals(l.getBtnLogin())) {
+            if (l.getTxtuser() != null && l.getTxtpass() != null) {
+                String user = l.getTxtuser();
+                String pass = l.getTxtpass();
+                if (levelAktif.equals("ad")) {
+                    try {
+                        model.menuLoginAdmin(user, pass);
+                        dashAd.setVisible(true);
+                        l.setVisible(false);
+                        levelAktif = null;
+                        l.dispose();
+                    }catch(Exception e){
+                        l.viewErrorMsg();
+                        l.reset();
+                }
+            }
         }
     }
+}
 
 }
