@@ -8,6 +8,7 @@ package View;
 import java.awt.TextField;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,7 +48,7 @@ public class Login2 extends javax.swing.JFrame {
         txtpass.setText("PASSWORD");
 
         txtuser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtuser.setText("USERNAME");
+        txtuser.setName(""); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Vani", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,6 +113,9 @@ public class Login2 extends javax.swing.JFrame {
                     .addGap(0, 315, Short.MAX_VALUE)))
         );
 
+        txtuser.getAccessibleContext().setAccessibleName("");
+        txtuser.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,8 +141,6 @@ public class Login2 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -150,17 +152,17 @@ public class Login2 extends javax.swing.JFrame {
     private java.awt.TextField txtuser;
     // End of variables declaration//GEN-END:variables
 
-    public void addListener(ActionListener e){
+    public void addListener(ActionListener e) {
         btnLogin.addActionListener(e);
         btnBack.addActionListener(e);
     }
 
-    public TextField getTxtpass() {
-        return txtpass;
+    public String getTxtpass() {
+        return txtpass.getText();
     }
 
-    public TextField getTxtuser() {
-        return txtuser;
+    public String getTxtuser() {
+        return txtuser.getText();
     }
 
     public JButton getBtnLogin() {
@@ -170,10 +172,14 @@ public class Login2 extends javax.swing.JFrame {
     public JButton getBtnBack() {
         return btnBack;
     }
-    
-     public void reset(){
+
+    public void reset() {
         txtuser.setText("");
         txtpass.setText("");
     }
-    
+
+    public void viewErrorMsg() {
+        JOptionPane.showMessageDialog(this, "Maaf ID atau Password salah");
+    }
+
 }
