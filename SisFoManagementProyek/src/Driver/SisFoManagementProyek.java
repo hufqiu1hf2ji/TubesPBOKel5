@@ -23,7 +23,6 @@ public class SisFoManagementProyek {
         AplikasiKonsol coba = new AplikasiKonsol();
         Controller c = new Controller(coba);
         coba.MainMenu();
-      
         
     }
 }
