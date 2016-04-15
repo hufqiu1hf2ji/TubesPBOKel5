@@ -206,6 +206,12 @@ public class AplikasiKonsol {
         deleteProgrammer(id);
         return p;
     }
+    
+    public boolean menuLoginAdmin(String id,String pass){
+        if(id.equals("admin") && pass.equals("admin")){
+            return true;
+        }else throw new IllegalStateException("Admin dan Password salah");
+    }
 
     //----------------------------------------------------------------------------------------------------
     //FUNGSIONALITAS PROGRAMMER.
