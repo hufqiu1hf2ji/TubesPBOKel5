@@ -5,16 +5,21 @@
  */
 package View;
 
+import java.awt.TextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author WAHYU LINTANG
  */
-public class MENU23 extends javax.swing.JFrame {
+public class DetailProyekMP extends javax.swing.JFrame {
 
     /**
      * Creates new form MENU23
      */
-    public MENU23() {
+    public DetailProyekMP() {
         initComponents();
     }
 
@@ -30,37 +35,37 @@ public class MENU23 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        lblUser = new javax.swing.JLabel();
+        btnTambahProyek = new javax.swing.JButton();
+        btnHapusProyek = new javax.swing.JButton();
+        btnDetailProyek = new javax.swing.JButton();
+        btnBeranda = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbNamaProyek = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        textField2 = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
+        txtNamaTugas = new java.awt.TextField();
+        btnSimpanTgs = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jButton11 = new javax.swing.JButton();
+        cbNamaTugas = new javax.swing.JComboBox<>();
+        btnHapusTugas = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton7 = new javax.swing.JButton();
+        cbNamaProTP = new javax.swing.JComboBox<>();
+        btnSimpanPelaksana = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
+        cbTugasSetP = new javax.swing.JComboBox<>();
+        btnSimpanSetP = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cbNamaProSP = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
+        btnHapusPelaksana = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        cbNamaProHapus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,59 +77,58 @@ public class MENU23 extends javax.swing.JFrame {
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton4.setFont(new java.awt.Font("Vani", 1, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\Tubes PBO\\logout2.png")); // NOI18N
-        jButton4.setText("LOGOUT ");
+        btnLogout.setFont(new java.awt.Font("Vani", 1, 12)); // NOI18N
+        btnLogout.setText("LOGOUT ");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("USER :  MANAJER PROYEK");
+        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUser.setText("USER :  MANAJER PROYEK");
 
-        jButton3.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
-        jButton3.setText("TAMBAH PROYEK");
+        btnTambahProyek.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
+        btnTambahProyek.setText("TAMBAH PROYEK");
 
-        jButton5.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
-        jButton5.setText("HAPUS PROYEK");
+        btnHapusProyek.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
+        btnHapusProyek.setText("HAPUS PROYEK");
 
-        jButton6.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
-        jButton6.setText("DETAIL PROYEK");
+        btnDetailProyek.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
+        btnDetailProyek.setText("DETAIL PROYEK");
 
-        jButton8.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
-        jButton8.setText("BERANDA");
+        btnBeranda.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
+        btnBeranda.setText("BERANDA");
 
-        jDesktopPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnLogout, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lblUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnTambahProyek, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnHapusProyek, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnDetailProyek, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnBeranda, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnHapusProyek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTambahProyek, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDetailProyek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBeranda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTambahProyek, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHapusProyek, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDetailProyek, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -138,7 +142,7 @@ public class MENU23 extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel14.setText("INPUT NAMA TUGAS   :");
 
-        jButton1.setText("SIMPAN");
+        btnSimpanTgs.setText("SIMPAN");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -148,12 +152,12 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(336, 336, 336)
-                        .addComponent(jButton1))
+                        .addComponent(btnSimpanTgs))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel14)
                         .addGap(25, 25, 25)
-                        .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 191, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -162,9 +166,9 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSimpanTgs)
                 .addGap(76, 76, 76))
         );
 
@@ -175,7 +179,7 @@ public class MENU23 extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel20.setText("INPUT NAMA TUGAS   :");
 
-        jButton11.setText("HAPUS");
+        btnHapusTugas.setText("HAPUS");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -185,11 +189,11 @@ public class MENU23 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel20)
                 .addGap(25, 25, 25)
-                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(309, Short.MAX_VALUE)
-                .addComponent(jButton11)
+                .addComponent(btnHapusTugas)
                 .addGap(234, 234, 234))
         );
         jPanel4Layout.setVerticalGroup(
@@ -198,9 +202,9 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addComponent(jButton11)
+                .addComponent(btnHapusTugas)
                 .addGap(86, 86, 86))
         );
 
@@ -211,7 +215,7 @@ public class MENU23 extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel16.setText("INPUT NAMA PROGRAMMER   :");
 
-        jButton7.setText("SIMPAN");
+        btnSimpanPelaksana.setText("SIMPAN");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -221,11 +225,11 @@ public class MENU23 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel16)
                 .addGap(25, 25, 25)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbNamaProTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(336, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnSimpanPelaksana)
                 .addGap(199, 199, 199))
         );
         jPanel5Layout.setVerticalGroup(
@@ -234,9 +238,9 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNamaProTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnSimpanPelaksana)
                 .addGap(75, 75, 75))
         );
 
@@ -247,7 +251,7 @@ public class MENU23 extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel17.setText("INPUT NAMA TUGAS   :");
 
-        jButton9.setText("SIMPAN");
+        btnSimpanSetP.setText("SIMPAN");
 
         jLabel18.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel18.setText("INPUT NAMA PROGRAMMER   :");
@@ -258,7 +262,7 @@ public class MENU23 extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(338, Short.MAX_VALUE)
-                .addComponent(jButton9)
+                .addComponent(btnSimpanSetP)
                 .addGap(199, 199, 199))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -266,11 +270,11 @@ public class MENU23 extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbTugasSetP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(25, 25, 25)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbNamaProSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -279,13 +283,13 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTugasSetP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNamaProSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jButton9)
+                .addComponent(btnSimpanSetP)
                 .addGap(75, 75, 75))
         );
 
@@ -293,7 +297,7 @@ public class MENU23 extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton10.setText("HAPUS");
+        btnHapusPelaksana.setText("HAPUS");
 
         jLabel19.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel19.setText("INPUT NAMA PROGRAMMER   :");
@@ -306,11 +310,11 @@ public class MENU23 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addGap(25, 25, 25)
-                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbNamaProHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(309, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                .addComponent(btnHapusPelaksana)
                 .addGap(234, 234, 234))
         );
         jPanel7Layout.setVerticalGroup(
@@ -319,9 +323,9 @@ public class MENU23 extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addComponent(jButton10)
+                    .addComponent(cbNamaProHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addComponent(btnHapusPelaksana)
                 .addGap(86, 86, 86))
         );
 
@@ -340,11 +344,11 @@ public class MENU23 extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(25, 25, 25)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cbNamaProyek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -355,7 +359,7 @@ public class MENU23 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbNamaProyek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -381,55 +385,24 @@ public class MENU23 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MENU23.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MENU23.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MENU23.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MENU23.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MENU23().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JButton btnBeranda;
+    private javax.swing.JButton btnDetailProyek;
+    private javax.swing.JButton btnHapusPelaksana;
+    private javax.swing.JButton btnHapusProyek;
+    private javax.swing.JButton btnHapusTugas;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnSimpanPelaksana;
+    private javax.swing.JButton btnSimpanSetP;
+    private javax.swing.JButton btnSimpanTgs;
+    private javax.swing.JButton btnTambahProyek;
+    private javax.swing.JComboBox<String> cbNamaProHapus;
+    private javax.swing.JComboBox<String> cbNamaProSP;
+    private javax.swing.JComboBox<String> cbNamaProTP;
+    private javax.swing.JComboBox<String> cbNamaProyek;
+    private javax.swing.JComboBox<String> cbNamaTugas;
+    private javax.swing.JComboBox<String> cbTugasSetP;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -438,7 +411,6 @@ public class MENU23 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -447,6 +419,82 @@ public class MENU23 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private java.awt.TextField textField2;
+    private javax.swing.JLabel lblUser;
+    private java.awt.TextField txtNamaTugas;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnBeranda() {
+        return btnBeranda;
+    }
+
+    public JButton getBtnDetailProyek() {
+        return btnDetailProyek;
+    }
+
+    public JButton getBtnHapusPelaksana() {
+        return btnHapusPelaksana;
+    }
+
+    public JButton getBtnHapusProyek() {
+        return btnHapusProyek;
+    }
+
+    public JButton getBtnHapusTugas() {
+        return btnHapusTugas;
+    }
+
+    public JButton getBtnLogout() {
+        return btnLogout;
+    }
+
+    public JButton getBtnSimpanPelaksana() {
+        return btnSimpanPelaksana;
+    }
+
+    public JButton getBtnSimpanSetP() {
+        return btnSimpanSetP;
+    }
+
+    public JButton getBtnSimpanTgs() {
+        return btnSimpanTgs;
+    }
+
+    public JButton getBtnTambahProyek() {
+        return btnTambahProyek;
+    }
+
+    public int getCbNamaProHapus() {
+        return cbNamaProHapus.getSelectedIndex();
+    }
+
+    public int getCbNamaProSP() {
+        return cbNamaProSP.getSelectedIndex();
+    }
+
+    public int getCbNamaProTP() {
+        return cbNamaProTP.getSelectedIndex();
+    }
+
+    public int getCbNamaProyek() {
+        return cbNamaProyek.getSelectedIndex();
+    }
+
+    public int getCbNamaTugas() {
+        return cbNamaTugas.getSelectedIndex();
+    }
+
+    public int getCbTugasSetP() {
+        return cbTugasSetP.getSelectedIndex();
+    }
+    
+    
+
+    public JLabel getLblUser() {
+        return lblUser;
+    }
+
+    public TextField getTxtNamaTugas() {
+        return txtNamaTugas;
+    }
+
 }

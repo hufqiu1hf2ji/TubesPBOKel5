@@ -60,22 +60,22 @@
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textField2" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="txtNamaProyek" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbTgl" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbBulan" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbTahun" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="249" max="32767" attributes="0"/>
+                  <EmptySpace pref="272" max="32767" attributes="0"/>
                   <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -88,17 +88,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="textField2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNamaProyek" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbTgl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbBulan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbTahun" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
               <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
@@ -125,13 +125,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblUser" alignment="1" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton5" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButton3" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jButton4" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButton8" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnHapusProyek" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnTambahProyek" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnDetailProyek" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnLogout" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnBeranda" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -139,41 +139,38 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="lblUser" min="-2" pref="63" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnBeranda" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnTambahProyek" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnHapusProyek" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnDetailProyek" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="btnLogout" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="btnLogout">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Vani" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Tubes PBO\logout2.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="LOGOUT "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblUser">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="USER :  MANAJER PROYEK"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnTambahProyek">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Vani" size="10" style="0"/>
@@ -181,7 +178,7 @@
                 <Property name="text" type="java.lang.String" value="TAMBAH PROYEK"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="btnHapusProyek">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Vani" size="10" style="0"/>
@@ -189,7 +186,7 @@
                 <Property name="text" type="java.lang.String" value="HAPUS PROYEK"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="btnDetailProyek">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Vani" size="10" style="0"/>
@@ -197,7 +194,7 @@
                 <Property name="text" type="java.lang.String" value="DETAIL PROYEK"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
+            <Component class="javax.swing.JButton" name="btnBeranda">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Vani" size="10" style="0"/>
@@ -215,7 +212,7 @@
             <Property name="text" type="java.lang.String" value="INPUT NAMA PROYEK  :"/>
           </Properties>
         </Component>
-        <Component class="java.awt.TextField" name="textField2">
+        <Component class="java.awt.TextField" name="txtNamaProyek">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -225,7 +222,7 @@
             <Property name="text" type="java.lang.String" value="INPUT  TANGGAL   :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cbTgl">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="31">
@@ -267,7 +264,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="cbBulan">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="12">
@@ -290,7 +287,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="cbTahun">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="17">
@@ -318,7 +315,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnSimpan">
           <Properties>
             <Property name="text" type="java.lang.String" value="SIMPAN"/>
           </Properties>
