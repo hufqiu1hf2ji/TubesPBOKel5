@@ -66,6 +66,13 @@ public class ControllerManajerProyek implements ActionListener {
         }
     }
 
+    public void dashMPBukaLayar() {
+        if (!dashMP.isShowing()) {
+            dashMP.setVisible(true);
+            dashMP.addListener(this);
+        }
+    }
+
     public void tpMPBukaLayar() {
         if (!tpMP.isShowing()) {
             tpMP.setVisible(true);
@@ -96,20 +103,24 @@ public class ControllerManajerProyek implements ActionListener {
             PindahLayar();
         }
 
-        if (source.equals(dashMP.getBtnTambahProyek())) {
+        if (source.equals(dashMP.getBtnTambahProyek()) || source.equals(dpMP.getBtnTambahProyek()) || source.equals(tpMP.getBtnTambahProyek()) || source.equals(hpMP.getBtnTambahProyek())) {
             PindahLayar();
             tpMPBukaLayar();
-
         }
 
-        if (source.equals(dashMP.getBtnHapusProyek())) {
+        if (source.equals(dashMP.getBtnHapusProyek()) || source.equals(dpMP.getBtnHapusProyek()) || source.equals(tpMP.getBtnHapusProyek()) || source.equals(hpMP.getBtnHapusProyek())) {
             PindahLayar();
             hpMPBukaLayar();
         }
 
-        if (source.equals(dashMP.getBtnDetailProyek())) {
+        if (source.equals(dashMP.getBtnDetailProyek()) || source.equals(dpMP.getBtnDetailProyek()) || source.equals(tpMP.getBtnDetailProyek()) || source.equals(hpMP.getBtnDetailProyek())) {
             PindahLayar();
             dpMPBukaLayar();
+        }
+
+        if (source.equals(tpMP.getBtnBeranda()) || source.equals(dpMP.getBtnBeranda()) || source.equals(dashMP.getBtnBeranda()) || source.equals(hpMP.getBtnBeranda())) {
+            PindahLayar();
+            dashMPBukaLayar();
         }
 
         if (source.equals(tpMP.getBtnSimpan())) {
@@ -128,4 +139,5 @@ public class ControllerManajerProyek implements ActionListener {
         }
 
     }
+
 }
