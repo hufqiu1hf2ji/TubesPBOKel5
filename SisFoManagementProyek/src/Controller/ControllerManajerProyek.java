@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.AplikasiKonsol;
+import Model.Proyek;
 import View.DashboardAdmin;
 import View.DashboardManajerPro;
 import View.DetailProyekMP;
@@ -14,6 +15,7 @@ import View.TambahProyekMP;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,30 +69,52 @@ public class ControllerManajerProyek implements ActionListener {
     }
 
     public void dashMPBukaLayar() {
-        if (!dashMP.isShowing()) {
-            dashMP.setVisible(true);
-            dashMP.addListener(this);
-        }
+        dashMP.setVisible(true);
+        dashMP.addListener(this);
+
     }
 
     public void tpMPBukaLayar() {
-        if (!tpMP.isShowing()) {
-            tpMP.setVisible(true);
-            tpMP.addListener(this);
-        }
+        tpMP.setVisible(true);
+        tpMP.addListener(this);
+        
+
     }
 
     public void hpMPBukaLayar() {
-        if (!hpMP.isShowing()) {
-            hpMP.setVisible(true);
-            hpMP.addListener(this);
-        }
+        hpMP.setVisible(true);
+        hpMP.addListener(this);
+        hpMP.reset();
+        ViewProyek();
     }
 
     public void dpMPBukaLayar() {
-        if (!dpMP.isShowing()) {
-            dpMP.setVisible(true);
-            dpMP.addListener(this);
+        dpMP.setVisible(true);
+        dpMP.addListener(this);
+
+    }
+
+    public void ViewProyek() {
+        try {
+            String[][] ar2 = model.menuViewProyek();
+            DefaultTableModel mdlTable = (DefaultTableModel) hpMP.getTblProyek().getModel();
+            int ia = 0;
+            for (int i = 0; i < ar2.length; i++) {
+                mdlTable.addRow(new Object[]{});
+                hpMP.getTblProyek().setValueAt(ar2[i][0], i, 0);
+//                ia++;
+                hpMP.getTblProyek().setValueAt(ar2[i][1], i, 1);
+//                ia++;
+                hpMP.getTblProyek().setValueAt(ar2[i][2], i, 2);
+                hpMP.getTblProyek().setValueAt(ar2[i][3], i, 3);
+                hpMP.setCbNamaProyek(ar2[i][0]);
+//               
+//                ia = 0;
+//                ia++;
+//                fr.getTable().setValueAt(ia, i, i);
+            }
+        } catch (Exception e) {
+
         }
     }
 
@@ -137,6 +161,22 @@ public class ControllerManajerProyek implements ActionListener {
                 tpMP.reset();
             }
         }
+
+        if (source.equals(hpMP.getBtnHapus())) {
+            try {
+                Proyek temp = model.menuRemoveProyek(hpMP.getCbNamaProyek());
+                hpMP.viewErrorMsg("Proyek " + temp.getNamaProyek() + " berhasil dihapus.");
+                PindahLayar();
+                hpMPBukaLayar();
+            } catch (Exception e) {
+                hpMP.viewErrorMsg("Hapus proyek gagal.");
+                PindahLayar();
+                hpMPBukaLayar();
+            }
+        }
+        
+        
+        
 
     }
 
