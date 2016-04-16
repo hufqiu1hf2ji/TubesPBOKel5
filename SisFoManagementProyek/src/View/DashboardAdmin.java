@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 public class DashboardAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form MENU1
+     * Creates new form DashboardAdmin
      */
     public DashboardAdmin() {
         initComponents();
@@ -39,7 +39,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         txtArAktivitas = new javax.swing.JTextArea();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         btnLogout = new javax.swing.JButton();
-        lblNamaUser = new javax.swing.JLabel();
+        lblUserAdmin = new javax.swing.JLabel();
         btnTambahMP = new javax.swing.JButton();
         btnTambahPro = new javax.swing.JButton();
         btnHapusMP = new javax.swing.JButton();
@@ -69,8 +69,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
         btnLogout.setFont(new java.awt.Font("Vani", 1, 12)); // NOI18N
         btnLogout.setText("LOGOUT ");
 
-        lblNamaUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNamaUser.setText("USER :  ADMIN");
+        lblUserAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserAdmin.setText("USER :  ADMIN");
 
         btnTambahMP.setFont(new java.awt.Font("Vani", 0, 10)); // NOI18N
         btnTambahMP.setText("TAMBAH MANAJER PROYEK");
@@ -88,7 +88,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         btnBeranda.setText("BERANDA");
 
         jDesktopPane1.setLayer(btnLogout, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lblNamaUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lblUserAdmin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnTambahMP, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnTambahPro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnHapusMP, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -99,7 +99,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblNamaUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUserAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                 .addComponent(btnTambahPro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTambahMP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -112,7 +112,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(lblNamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblUserAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -176,7 +176,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel2)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -225,8 +225,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeranda;
     private javax.swing.JButton btnHapusMP;
@@ -242,12 +242,16 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblNamaUser;
+    private javax.swing.JLabel lblUserAdmin;
     private javax.swing.JTable tblMP;
     private javax.swing.JTable tblPro;
     private javax.swing.JTextArea txtArAktivitas;
     // End of variables declaration//GEN-END:variables
 
+    public void setlblUserAdmin(String input){
+        lblUserAdmin.setText(input);
+    }
+    
     public JButton getBtnBeranda() {
         return btnBeranda;
     }
@@ -260,7 +264,7 @@ public class DashboardAdmin extends javax.swing.JFrame {
         return btnHapusPro;
     }
 
-    public Object getBtnLogout() {
+    public JButton getBtnLogout() {
         return btnLogout;
     }
 
@@ -272,8 +276,8 @@ public class DashboardAdmin extends javax.swing.JFrame {
         return btnTambahPro;
     }
 
-    public JLabel getLblNamaUser() {
-        return lblNamaUser;
+    public JLabel getLblUserAdmin() {
+        return lblUserAdmin;
     }
 
     public JTable getTblMP() {
@@ -287,7 +291,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
     public JTextArea getTxtArAktivitas() {
         return txtArAktivitas;
     }
-
     
     public void addListener(ActionListener e){
         btnBeranda.addActionListener(e);
@@ -296,8 +299,6 @@ public class DashboardAdmin extends javax.swing.JFrame {
         btnLogout.addActionListener(e);
         btnTambahMP.addActionListener(e);
         btnTambahPro.addActionListener(e); 
-    
-    
     }
-
+    
 }
