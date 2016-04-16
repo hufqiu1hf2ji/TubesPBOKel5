@@ -201,13 +201,13 @@ public class ControllerAdmin implements ActionListener{
                         jk ="P";
                     }            
                 if(nama.equals("") || telepon.equals("") || alamat.equals("") || id.equals("") || password.equals("") || jk.equals("")){
-                   atPro.viewErrorMsg("Harap isi semua field diatas");
+                   throw new IllegalStateException("Harap inputkan semua field");
                 }
                 else{    
                     model.menuAddProgrammer(nama, alamat, telepon, alamat, id, password);
                 }        
                     }catch(Exception e){
-                        atPro.viewErrorMsg("Input gagal");
+                        atPro.viewErrorMsg(e.getMessage());
             }
             PindahLayar();
             atProBukaLayar();

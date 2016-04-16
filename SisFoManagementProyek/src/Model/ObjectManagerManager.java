@@ -69,8 +69,7 @@ public class ObjectManagerManager
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
             return ois.readObject();
 
-        } catch (EOFException ex)
-        {
+        } catch (EOFException ex) {
             return null;
         } catch (Exception e)
         {

@@ -91,7 +91,7 @@ public class Controller implements ActionListener {
                         l.reset();
                     }
                 }
-                if (levelAktif.equals("mp")) {
+                else if (levelAktif.equals("mp")) {
                      try {
                         model.MenuLoginManajerProyek(user, pass);
                         if (cmp != null) {
