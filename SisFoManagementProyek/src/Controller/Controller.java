@@ -21,22 +21,28 @@ public class Controller implements ActionListener {
     private AplikasiKonsol model;
     private Login1 l1;
     private Login2 l;
-    private DashboardAdmin dashAd;
     private String levelAktif = null;
     private ControllerAdmin ca;
+    private ControllerManajerProyek cmp;
 
     public Controller(AplikasiKonsol model) {
         this.model = model;
         this.l1 = new Login1();
         this.l = new Login2();
-        this.dashAd = new DashboardAdmin();
         l1.setVisible(true);
         l1.addListener(this);
         l.setVisible(false);
         l.addListener(this);
-        dashAd.setVisible(false);
-        dashAd.addListener(this);
+        
 
+    }
+    
+    public void triggerLogout(){
+        l1.setVisible(true);
+        l1.addListener(this);
+        l.setVisible(false);
+        l.addListener(this);
+        l.reset();
     }
 
     @Override
@@ -73,12 +79,17 @@ public class Controller implements ActionListener {
                 if (levelAktif.equals("ad")) {
                     try {
                         model.menuLoginAdmin(user, pass);
-                        ca = new ControllerAdmin(model);
+                        if(ca!=null){
+                         ca.trigerLogin();
+                        }else{
+                         ca = new ControllerAdmin(this,model);
+                           
+                        }
                         l.setVisible(false);
                         levelAktif = null;
                         l.dispose();
                     }catch(Exception e){
-                        l.viewErrorMsg();
+                        l.viewErrorMsg(e.getMessage());
                         l.reset();
                 }
             }

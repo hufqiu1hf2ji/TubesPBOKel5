@@ -19,18 +19,23 @@ public class ControllerAdmin implements ActionListener{
     private DashboardAdmin dashAd;
     private Controller c;
 
-    public ControllerAdmin(AplikasiKonsol m) {
+    public ControllerAdmin(Controller c,AplikasiKonsol m) {
+        this.c=c;
         this.dashAd = new DashboardAdmin();
         this.model = m;
         dashAd.setVisible(true);
         dashAd.addListener(this);
     }
-
+    public void trigerLogin(){
+        dashAd.setVisible(true);
+        dashAd.addListener(this);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object source = ae.getSource();
         if(source.equals(dashAd.getBtnLogout())){
-            c = new Controller(model);
+            c.triggerLogout();
             dashAd.setVisible(false);
             dashAd.dispose();
         }

@@ -22,9 +22,9 @@ public class AplikasiKonsol {
     private ArrayList<Programmer> daftarProgrammer = new ArrayList<Programmer>();
 
     private int indexLogin = -1;
-    private ManajerProyek mp;
-    private Programmer p;
-    private Proyek pro;
+    static private ManajerProyek mp;
+    static private Programmer p;
+    static private Proyek pro;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     Scanner in = new Scanner(System.in);
     int pil;
@@ -206,11 +206,13 @@ public class AplikasiKonsol {
         deleteProgrammer(id);
         return p;
     }
-    
-    public boolean menuLoginAdmin(String id,String pass){
-        if(id.equals("admin") && pass.equals("admin")){
+
+    public boolean menuLoginAdmin(String id, String pass) {
+        if (id.equals("admin") && pass.equals("admin")) {
             return true;
-        }else throw new IllegalStateException("Admin dan Password salah");
+        } else {
+            throw new IllegalStateException("Username atau Password salah");
+        }
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -248,6 +250,22 @@ public class AplikasiKonsol {
             p = temp;
         }
         return temp;
+    }
+
+    public boolean MenuLoginProgrammer(String id, String password) {
+        Programmer temp = searchProgrammer(id);
+        if (temp != null) {
+            if (temp.getPassword().equals(password)) {
+                p = temp;
+                return true;
+            } else {
+                throw new IllegalStateException("Username atau Password salah");
+            }
+
+        } else {
+            throw new IllegalStateException("Username atau Password salah");
+        }
+
     }
 
     //Mengumpulkan data namaProyek,jumlahProgrammer,tugas belum selesai oleh si programmer,tugas selesai programmer,dan deadline setiap proyek yang di pimpin oleh manager proyek.
@@ -317,6 +335,21 @@ public class AplikasiKonsol {
             mp = temp;
         }
         return temp;
+    }
+
+    public boolean MenuLoginManajerProyek(String id, String password) {
+        ManajerProyek temp = searchManajerProyek(id);
+        if (temp != null) {
+            if (temp.getPassword().equals(password)) {
+                mp = temp;
+                return true;
+            } else {
+                throw new IllegalStateException("Username atau Password salah");
+            }
+        } else {
+            throw new IllegalStateException("Username atau Password salah");
+        }
+
     }
 
     //Mengumpulkan data nama,jumlahprogrammer,tugas belum selesai,dan deadline setiap proyek yang di pimpin oleh manager proyek.

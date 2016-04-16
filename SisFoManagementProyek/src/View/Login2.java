@@ -45,8 +45,6 @@ public class Login2 extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 510));
         jPanel1.setRequestFocusEnabled(false);
 
-        txtpass.setText("PASSWORD");
-
         txtuser.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtuser.setName(""); // NOI18N
 
@@ -178,8 +176,8 @@ public class Login2 extends javax.swing.JFrame {
         txtpass.setText("");
     }
 
-    public void viewErrorMsg() {
-        JOptionPane.showMessageDialog(this, "Maaf ID atau Password salah");
+    public void viewErrorMsg(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
     }
-
+    
 }
