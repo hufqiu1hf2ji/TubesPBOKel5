@@ -8,6 +8,7 @@ package View;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
@@ -45,9 +46,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
         btnHapusMP = new javax.swing.JButton();
         btnHapusPro = new javax.swing.JButton();
         btnBeranda = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        panelMP = new javax.swing.JScrollPane();
         tblMP = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        panelPro = new javax.swing.JScrollPane();
         tblPro = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -130,29 +131,39 @@ public class DashboardAdmin extends javax.swing.JFrame {
 
         tblMP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nama", "ID", "Jumlah Proyek"
             }
-        ));
-        jScrollPane2.setViewportView(tblMP);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        panelMP.setViewportView(tblMP);
 
         tblPro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nama", "ID", "Jumlah Proyek"
             }
-        ));
-        jScrollPane3.setViewportView(tblPro);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        panelPro.setViewportView(tblPro);
 
         jLabel2.setText("Programmer");
 
@@ -170,9 +181,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
+                            .addComponent(panelMP)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(panelPro, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel2)))))
@@ -192,11 +203,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelMP, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPro, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jDesktopPane1)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +251,9 @@ public class DashboardAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblUserAdmin;
+    private javax.swing.JScrollPane panelMP;
+    private javax.swing.JScrollPane panelPro;
     private javax.swing.JTable tblMP;
     private javax.swing.JTable tblPro;
     private javax.swing.JTextArea txtArAktivitas;
@@ -300,5 +311,14 @@ public class DashboardAdmin extends javax.swing.JFrame {
         btnTambahMP.addActionListener(e);
         btnTambahPro.addActionListener(e); 
     }
+
+    public JScrollPane getPanelMP() {
+        return panelMP;
+    }
+
+    public JScrollPane getPanelPro() {
+        return panelPro;
+    }
+    
     
 }

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
@@ -37,7 +38,7 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelHapusMP = new javax.swing.JScrollPane();
         tblMP = new javax.swing.JTable();
         btnHapus = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -61,16 +62,21 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
 
         tblMP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "NAMA", "JUMLAH PROYEK"
             }
-        ));
-        jScrollPane1.setViewportView(tblMP);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        panelHapusMP.setViewportView(tblMP);
 
         btnHapus.setText("HAPUS");
 
@@ -158,7 +164,7 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
                                 .addComponent(textIdMP, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnHapus))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(panelHapusMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -174,7 +180,7 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(textIdMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelHapusMP, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -210,12 +216,17 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblUserAdmin;
+    private javax.swing.JScrollPane panelHapusMP;
     private javax.swing.JTable tblMP;
     private java.awt.TextField textIdMP;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void setlblUserAdmin(String input){
+        lblUserAdmin.setText(input);
+    }
+    
     public JButton getBtnBeranda() {
         return btnBeranda;
     }
@@ -252,19 +263,23 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
         return tblMP;
     }
     
-        public String getTextIdMP() {
+    public String getTextIdMP() {
         return textIdMP.getText();
     }
 
     public void viewErrorMsg(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }
-    
+       
     public void reset(){
         textIdMP.setText("");
     }
-
-    public void addListener(ActionListener e){
+    
+    public void setTextIdMP(String input){
+        textIdMP.setText(input);
+    }
+    
+     public void addListener(ActionListener e){
         btnBeranda.addActionListener(e);
         btnHapusMP.addActionListener(e);
         btnHapusPro.addActionListener(e);
@@ -273,4 +288,10 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
         btnTambahPro.addActionListener(e);
         btnHapus.addActionListener(e);
     }
+
+    public JScrollPane getPanelHapusMP() {
+        return panelHapusMP;
+    }
+     
+     
 }

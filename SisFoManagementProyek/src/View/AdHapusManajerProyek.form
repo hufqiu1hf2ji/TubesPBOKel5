@@ -62,7 +62,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnHapus" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              <Component id="panelHapusMP" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -84,7 +84,7 @@
                       <Component id="textIdMP" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
+                  <Component id="panelHapusMP" min="-2" pref="283" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -100,7 +100,7 @@
             <Property name="text" type="java.lang.String" value="Hapus Manajer Proyek"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="panelHapusMP">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -110,10 +110,10 @@
             <Component class="javax.swing.JTable" name="tblMP">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="4">
-                    <Column editable="true" title="ID" type="java.lang.Object"/>
-                    <Column editable="true" title="NAMA" type="java.lang.Object"/>
-                    <Column editable="true" title="JUMLAH PROYEK" type="java.lang.Object"/>
+                  <Table columnCount="3" rowCount="0">
+                    <Column editable="false" title="ID" type="java.lang.Object"/>
+                    <Column editable="false" title="NAMA" type="java.lang.Object"/>
+                    <Column editable="false" title="JUMLAH PROYEK" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
@@ -37,8 +38,8 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMP = new javax.swing.JTable();
+        panelHapusP = new javax.swing.JScrollPane();
+        tblPro = new javax.swing.JTable();
         btnHapus = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         btnLogout = new javax.swing.JButton();
@@ -59,18 +60,15 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Hapus Programmer");
 
-        tblMP.setModel(new javax.swing.table.DefaultTableModel(
+        tblPro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "NAMA", "JUMLAH PROYEK"
             }
         ));
-        jScrollPane1.setViewportView(tblMP);
+        panelHapusP.setViewportView(tblPro);
 
         btnHapus.setText("HAPUS");
 
@@ -158,7 +156,7 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
                                 .addComponent(textIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnHapus))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(panelHapusP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -175,7 +173,7 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addComponent(textIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelHapusP, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -198,7 +196,6 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeranda;
@@ -212,11 +209,15 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblUserAdmin;
-    private javax.swing.JTable tblMP;
+    private javax.swing.JScrollPane panelHapusP;
+    private javax.swing.JTable tblPro;
     private java.awt.TextField textIdPro;
     // End of variables declaration//GEN-END:variables
+
+    public void setlblUserAdmin(String input) {
+        lblUserAdmin.setText(input);
+    }
 
     public JButton getBtnBeranda() {
         return btnBeranda;
@@ -250,23 +251,23 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
         return lblUserAdmin;
     }
 
-    public JTable getTblMP() {
-        return tblMP;
+    public JTable getTbPro() {
+        return tblPro;
     }
 
     public String getTextIdPro() {
         return textIdPro.getText();
     }
-    
+
     public void viewErrorMsg(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }
-    
-    public void reset(){
+
+    public void reset() {
         textIdPro.setText("");
     }
 
-    public void addListener(ActionListener e){
+    public void addListener(ActionListener e) {
         btnBeranda.addActionListener(e);
         btnHapusMP.addActionListener(e);
         btnHapusPro.addActionListener(e);
@@ -274,5 +275,9 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
         btnTambahMP.addActionListener(e);
         btnTambahPro.addActionListener(e);
         btnHapus.addActionListener(e);
+    }
+
+    public JScrollPane getPanelHapusP() {
+        return panelHapusP;
     }
 }
