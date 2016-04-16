@@ -76,6 +76,8 @@ public class ControllerManajerProyek implements ActionListener {
         try {
             tpMP.setVisible(true);
             tpMP.reset();
+
+            tpMP.getLblUser().setText(model.getMPAktif());
         } catch (Exception e) {
             tpMP.viewErrorMsg(e.getMessage());
         }
@@ -86,9 +88,9 @@ public class ControllerManajerProyek implements ActionListener {
             hpMP.setVisible(true);
             hpMP.resetCbNamaProyek();
             ViewHapusProyek();
-            hpMP.setLblUser(model.getMPAktif());
+            hpMP.getLblUser().setText(model.getMPAktif());
 
-            dpMP.getPanelTblTugas().setWheelScrollingEnabled(true);
+            hpMP.getPanelTabelHP().setWheelScrollingEnabled(true);
         } catch (Exception e) {
             hpMP.viewErrorMsg(e.getMessage());
         }
@@ -101,7 +103,6 @@ public class ControllerManajerProyek implements ActionListener {
             dpMP.getPanel().setVisible(false);
             dpMP.reset();
             ViewDetailProyek();
-
             dpMP.setLblUser(model.getMPAktif());
         } catch (Exception e) {
             dpMP.viewErrorMsg(e.getMessage());
@@ -253,7 +254,7 @@ public class ControllerManajerProyek implements ActionListener {
     }
 
     public void AktifitasTerakhir() {
-        
+
     }
 
     @Override
@@ -408,7 +409,5 @@ public class ControllerManajerProyek implements ActionListener {
             ViewTambahPelaksana();
             ViewPelaksanaProyek();
         }
-
     }
-
 }
