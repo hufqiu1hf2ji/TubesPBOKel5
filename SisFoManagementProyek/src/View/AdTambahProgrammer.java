@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -292,8 +293,8 @@ public class AdTambahProgrammer extends javax.swing.JFrame {
         return btnTambahPro;
     }
 
-    public JComboBox<String> getCbJenisKelaminPro() {
-        return cbJenisKelaminPro;
+    public int getCbJenisKelaminPro() {
+        return cbJenisKelaminPro.getSelectedIndex();
     }
 
     public JLabel getLblUserAdmin() {
@@ -327,6 +328,10 @@ public class AdTambahProgrammer extends javax.swing.JFrame {
         textNamaPro.setText("");
         textPassPro.setText("");
         textTeleponPro.setText("");
+    }
+    
+    public void viewErrorMsg(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
     }
     
     public void addListener(ActionListener e){
