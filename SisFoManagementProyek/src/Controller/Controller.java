@@ -33,11 +33,10 @@ public class Controller implements ActionListener {
         l1.addListener(this);
         l.setVisible(false);
         l.addListener(this);
-        
 
     }
-    
-    public void triggerLogout(){
+
+    public void triggerLogout() {
         l1.setVisible(true);
         l1.addListener(this);
         l.setVisible(false);
@@ -79,21 +78,28 @@ public class Controller implements ActionListener {
                 if (levelAktif.equals("ad")) {
                     try {
                         model.menuLoginAdmin(user, pass);
-                        if(ca!=null){
-                         ca.trigerLogin();
-                        }else{
-                         ca = new ControllerAdmin(this,model); 
+                        if (ca != null) {
+                            ca.trigerLogin();
+                        } else {
+                            ca = new ControllerAdmin(this, model);
                         }
                         l.setVisible(false);
                         levelAktif = null;
                         l.dispose();
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         l.viewErrorMsg(e.getMessage());
                         l.reset();
+                    }
+                }
+                if (levelAktif.equals("mp")) {
+                    if (cmp != null) {
+                        cmp.trigerLogin();
+                    } else {
+                        cmp = new ControllerManajerProyek(this, model);
+                    }
                 }
             }
         }
     }
-}
 
 }

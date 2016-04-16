@@ -28,7 +28,8 @@ public class ControllerManajerProyek implements ActionListener {
     private HapusProyekMP hpMP;
     private DetailProyekMP dpMP;
 
-    public ControllerManajerProyek(AplikasiKonsol m) {
+    public ControllerManajerProyek(Controller c, AplikasiKonsol m) {
+        this.c = c;
         this.dashMP = new DashboardManajerPro();
         this.tpMP = new TambahProyekMP();
         this.hpMP = new HapusProyekMP();
@@ -118,11 +119,13 @@ public class ControllerManajerProyek implements ActionListener {
                         tpMP.getCbTgl());
                 model.menuCreateProyek(
                         tpMP.getTxtNamaProyek(), deadline);
+                tpMP.viewErrorMsg("Berhasil");
                 tpMP.reset();
             } catch (Exception e) {
-                tpMP.reset();
                 tpMP.viewErrorMsg(e.getMessage());
+                tpMP.reset();
             }
         }
+
     }
 }
