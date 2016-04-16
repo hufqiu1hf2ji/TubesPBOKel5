@@ -403,8 +403,12 @@ public class AplikasiKonsol {
 
     //Membuat Proyek berdasarkan ManajerProyek yang aktif.
     public Proyek menuCreateProyek(String namaProyek, Date deadline) {
-        mp.createProyek(namaProyek, deadline);
-        return mp.getProyek(mp.getSizeProyek() - 1);
+        try {
+            mp.createProyek(namaProyek, deadline);
+            return mp.getProyek(mp.getSizeProyek() - 1);
+        } catch (Exception e) {
+            throw new IllegalStateException("Gagal Create Proyek");
+        }
     }
 
     //Menghapus Proyek pada ManajerProyek yang aktif berdasarkan indexProyek

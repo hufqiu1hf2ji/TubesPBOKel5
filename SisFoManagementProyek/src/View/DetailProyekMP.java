@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.TextField;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -487,7 +488,13 @@ public class DetailProyekMP extends javax.swing.JFrame {
         return cbTugasSetP.getSelectedIndex();
     }
     
-    
+   public void addListener(ActionListener e){
+        btnBeranda.addActionListener(e);
+        btnDetailProyek.addActionListener(e);
+        btnHapusProyek.addActionListener(e);
+        btnLogout.addActionListener(e);
+        btnTambahProyek.addActionListener(e);
+    }
 
     public JLabel getLblUser() {
         return lblUser;

@@ -82,8 +82,7 @@ public class Controller implements ActionListener {
                         if(ca!=null){
                          ca.trigerLogin();
                         }else{
-                         ca = new ControllerAdmin(this,model);
-                           
+                         ca = new ControllerAdmin(this,model); 
                         }
                         l.setVisible(false);
                         levelAktif = null;

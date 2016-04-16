@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -259,7 +260,10 @@ public class TambahProyekMP extends javax.swing.JFrame {
     public void reset() {
         txtNamaProyek.setText("");
     }
-
+    
+     public void viewErrorMsg(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeranda;
