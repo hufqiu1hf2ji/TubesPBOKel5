@@ -148,6 +148,13 @@ public class AplikasiKonsol {
         }
     }
 
+    public String getMPAktif() {
+        if (mp != null) {
+            return mp.getNama();
+        }
+        return "Anda siapa?";
+    }
+
     //MENU ADMIN.
     //Mengumpulkan List Programmer pada SISTEM.
     public String[][] menuListProgrammer() {

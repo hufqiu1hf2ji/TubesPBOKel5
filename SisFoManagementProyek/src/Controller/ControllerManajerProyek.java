@@ -37,16 +37,10 @@ public class ControllerManajerProyek implements ActionListener {
         this.hpMP = new HapusProyekMP();
         this.dpMP = new DetailProyekMP();
         this.model = m;
-        dashMP.setVisible(true);
-        dashMP.addListener(this);
+        dashMPBukaLayar();
         tpMP.setVisible(false);
         hpMP.setVisible(false);
         dpMP.setVisible(false);
-    }
-
-    public void trigerLogin() {
-        dashMP.setVisible(true);
-        dashMP.addListener(this);
     }
 
     public void PindahLayar() {
@@ -71,7 +65,7 @@ public class ControllerManajerProyek implements ActionListener {
     public void dashMPBukaLayar() {
         dashMP.setVisible(true);
         dashMP.addListener(this);
-
+        dashMP.setLblUser(model.getMPAktif());
     }
 
     public void tpMPBukaLayar() {
@@ -86,6 +80,7 @@ public class ControllerManajerProyek implements ActionListener {
         hpMP.addListener(this);
         hpMP.reset();
         ViewProyek();
+        hpMP.setLblUser(model.getMPAktif());
     }
 
     public void dpMPBukaLayar() {

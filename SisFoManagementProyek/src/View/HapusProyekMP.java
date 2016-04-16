@@ -261,7 +261,9 @@ public class HapusProyekMP extends javax.swing.JFrame {
     }
     
     
-    
+    public void setLblUser(String input){
+        lblUser.setText(input);
+    }
 
     public void addListener(ActionListener e) {
         btnBeranda.addActionListener(e);

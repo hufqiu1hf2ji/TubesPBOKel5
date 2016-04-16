@@ -93,7 +93,7 @@ public class Controller implements ActionListener {
                 }
                 if (levelAktif.equals("mp")) {
                     if (cmp != null) {
-                        cmp.trigerLogin();
+                        cmp.dashMPBukaLayar();
                     } else {
                         cmp = new ControllerManajerProyek(this, model);
                     }

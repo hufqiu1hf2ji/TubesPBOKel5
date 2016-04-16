@@ -176,6 +176,9 @@ public class DashboardManajerPro extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaAktivitas;
     // End of variables declaration//GEN-END:variables
 
+    public void setLblUser(String input){
+        lblUser.setText(input);
+    }
     public JButton getBtnBeranda() {
         return btnBeranda;
     }
