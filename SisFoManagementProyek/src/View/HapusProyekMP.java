@@ -44,7 +44,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
         btnHapusProyek = new javax.swing.JButton();
         btnDetailProyek = new javax.swing.JButton();
         btnBeranda = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelTabelHP = new javax.swing.JScrollPane();
         tblProyek = new javax.swing.JTable();
         btnHapus = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -131,7 +131,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblProyek);
+        panelTabelHP.setViewportView(tblProyek);
 
         btnHapus.setText("HAPUS");
 
@@ -150,7 +150,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnHapus))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(panelTabelHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(231, 231, 231)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +170,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbNamaProyek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelTabelHP, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jDesktopPane1)
         );
@@ -207,8 +207,8 @@ public class HapusProyekMP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JScrollPane panelTabelHP;
     private javax.swing.JTable tblProyek;
     // End of variables declaration//GEN-END:variables
 
@@ -271,6 +271,10 @@ public class HapusProyekMP extends javax.swing.JFrame {
         btnLogout.addActionListener(e);
         btnTambahProyek.addActionListener(e);
         btnHapus.addActionListener(e);
+    }
+
+    public JScrollPane getPanelTabelHP() {
+        return panelTabelHP;
     }
 
 }

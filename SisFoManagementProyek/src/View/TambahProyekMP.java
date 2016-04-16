@@ -238,6 +238,8 @@ public class TambahProyekMP extends javax.swing.JFrame {
     public JLabel getLblUser() {
         return lblUser;
     }
+    
+   
 
     /**
      * @param args the command line arguments
