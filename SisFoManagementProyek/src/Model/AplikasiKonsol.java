@@ -31,6 +31,27 @@ public class AplikasiKonsol {
 
     //FUNGSIONALITAS BERSAMA
     //----------------------------------------------------------------------------------------------------
+    public String getMPAktif() {
+        if (mp != null) {
+            return mp.getNama();
+        }
+        return "Anda siapa?";
+    }
+
+    public String getPAktif() {
+        if (p != null) {
+            return p.getNama();
+        }
+        return "Anda siapa?";
+    }
+
+    public String getProyekAktif() {
+        if (pro != null) {
+            return pro.getNamaProyek();
+        }
+        return "Tidak ada";
+    }
+
     //Mencari Programmer di SISTEM berdasarkan ID - Penggunaan : Admin(Add Programmer) , Admin(Delete Programmer) , ManajerProyek (Add Programmer) , Login Programmer.
     public Programmer searchProgrammer(String id) {
         for (int i = 0; i < daftarProgrammer.size(); i++) {
@@ -146,13 +167,6 @@ public class AplikasiKonsol {
         if (searchManajerProyek(id) != null) {
             daftarManajerProyek.remove(searchManajerProyek(id));
         }
-    }
-
-    public String getMPAktif() {
-        if (mp != null) {
-            return mp.getNama();
-        }
-        return "Anda siapa?";
     }
 
     //MENU ADMIN.
@@ -400,8 +414,12 @@ public class AplikasiKonsol {
                     } else {
                         ar[i][1] = "Tidak ada";
                     }
-                    ar[i][2] = Integer.toString(pro.getTugas(i - 1).getStatus());
-                }
+                    if(pro.getTugas(i-1).getStatus()==0){
+                        ar[i][2] = "Belum Selesai";
+                    }else if(pro.getTugas(i-1).getStatus()==1){
+                        ar[i][2] = "Sudah selesai";
+                    }
+                 }
                 return ar;
             }
         }
@@ -420,19 +438,24 @@ public class AplikasiKonsol {
 
     //Menghapus Proyek pada ManajerProyek yang aktif berdasarkan indexProyek
     public Proyek menuRemoveProyek(int index) {
-        if (index < mp.getSizeProyek() && index > -1) {
-            Proyek temp = mp.getProyek(index);
+        Proyek temp = null;
+        if (index < mp.getSizeProyek() && index > -1 && mp.getProyek(index)!=null) {
+            temp = mp.getProyek(index);
             mp.deleteProyek(index);
             return temp;
         } else {
-            return null;
+            throw new IllegalStateException("Hapus Proyek gagal");
         }
     }
 
     //Menambahkan Tugas baru tanpa pelaksana
     public Tugas menuCreateTugas(String namaTugas) {
-        pro.createTugas(namaTugas);
-        return pro.getTugas(pro.getSizeTugas() - 1);
+        try {
+            pro.createTugas(namaTugas);
+            return pro.getTugas(pro.getSizeTugas() - 1);
+        } catch (Exception e) {
+            throw new IllegalStateException("Gagal create Tugas.");
+        }
     }
 
     //Menambahkan Tugas baru dengan Pelaksana

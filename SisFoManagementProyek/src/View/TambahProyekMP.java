@@ -259,6 +259,9 @@ public class TambahProyekMP extends javax.swing.JFrame {
 
     public void reset() {
         txtNamaProyek.setText("");
+        cbBulan.setSelectedIndex(0);
+        cbTahun.setSelectedIndex(0);
+        cbTahun.setSelectedIndex(0);
     }
     
      public void viewErrorMsg(String msg) {

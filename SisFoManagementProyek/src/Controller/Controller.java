@@ -92,10 +92,19 @@ public class Controller implements ActionListener {
                     }
                 }
                 if (levelAktif.equals("mp")) {
-                    if (cmp != null) {
-                        cmp.dashMPBukaLayar();
-                    } else {
-                        cmp = new ControllerManajerProyek(this, model);
+                     try {
+                        model.MenuLoginManajerProyek(user, pass);
+                        if (cmp != null) {
+                            cmp.dashMPBukaLayar();
+                        } else {
+                            cmp = new ControllerManajerProyek(this, model);
+                        }
+                        l.setVisible(false);
+                        levelAktif = null;
+                        l.dispose();
+                    } catch (Exception e) {
+                        l.viewErrorMsg(e.getMessage());
+                        l.reset();
                     }
                 }
             }

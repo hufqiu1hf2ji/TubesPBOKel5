@@ -120,7 +120,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nama", "Jumlah Programmer", "Title 3", "Title 4"
+                "Nama", "Jumlah Programmer", "Jumlah Tugas", "Deadline"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -170,7 +170,7 @@ public class HapusProyekMP extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbNamaProyek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jDesktopPane1)
         );
@@ -247,11 +247,11 @@ public class HapusProyekMP extends javax.swing.JFrame {
     public int getCbNamaProyek() {
         return cbNamaProyek.getSelectedIndex();
     }
-    
-    public void reset(){
-        cbNamaProyek.setSelectedIndex(0);
+
+    public void resetCbNamaProyek() {
+        cbNamaProyek.removeAllItems();
     }
-    
+
     public void viewErrorMsg(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }
@@ -259,9 +259,8 @@ public class HapusProyekMP extends javax.swing.JFrame {
     public void setCbNamaProyek(String input) {
         cbNamaProyek.addItem(input);
     }
-    
-    
-    public void setLblUser(String input){
+
+    public void setLblUser(String input) {
         lblUser.setText(input);
     }
 
