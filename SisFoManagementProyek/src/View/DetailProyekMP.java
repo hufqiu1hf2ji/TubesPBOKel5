@@ -49,7 +49,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         cbNamaProyek = new javax.swing.JComboBox<>();
         panel = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
+        kelolaTugas = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtNamaTugas = new java.awt.TextField();
         btnSimpanTgs = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
         btnHapusTugas = new javax.swing.JButton();
         cbNamaTugas = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        kelolaPelaksana = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         cbNamaProTP = new javax.swing.JComboBox<>();
         btnSimpanPelaksana = new javax.swing.JButton();
@@ -71,12 +71,18 @@ public class DetailProyekMP extends javax.swing.JFrame {
         tblProTersedia = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        setPelaksana = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         cbTugasSetP = new javax.swing.JComboBox<>();
         btnSimpanSetP = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         cbNamaProSP = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTugasSP = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblProSP = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblProyekAktif = new javax.swing.JLabel();
         btnAktifkan = new javax.swing.JButton();
@@ -151,7 +157,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
 
         panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        kelolaTugas.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel14.setText("INPUT NAMA TUGAS   :");
@@ -173,41 +179,41 @@ public class DetailProyekMP extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel21.setText("Hapus Tugas               :");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout kelolaTugasLayout = new javax.swing.GroupLayout(kelolaTugas);
+        kelolaTugas.setLayout(kelolaTugasLayout);
+        kelolaTugasLayout.setHorizontalGroup(
+            kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kelolaTugasLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelTblTugas, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(kelolaTugasLayout.createSequentialGroup()
                             .addComponent(jLabel14)
                             .addGap(25, 25, 25)
                             .addComponent(txtNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnSimpanTgs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kelolaTugasLayout.createSequentialGroup()
                             .addComponent(jLabel21)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(kelolaTugasLayout.createSequentialGroup()
                                     .addGap(121, 121, 121)
                                     .addComponent(btnHapusTugas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cbNamaTugas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        kelolaTugasLayout.setVerticalGroup(
+            kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kelolaTugasLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(txtNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addComponent(btnSimpanTgs)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(kelolaTugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbNamaTugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addGap(5, 5, 5)
@@ -217,9 +223,9 @@ public class DetailProyekMP extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panel.addTab("Kelola Tugas", jPanel3);
+        panel.addTab("Kelola Tugas", kelolaTugas);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        kelolaPelaksana.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel16.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel16.setText("INPUT NAMA PROGRAMMER   :");
@@ -265,23 +271,23 @@ public class DetailProyekMP extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel22.setText("Programmer dalam Proyek");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout kelolaPelaksanaLayout = new javax.swing.GroupLayout(kelolaPelaksana);
+        kelolaPelaksana.setLayout(kelolaPelaksanaLayout);
+        kelolaPelaksanaLayout.setHorizontalGroup(
+            kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kelolaPelaksanaLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(kelolaPelaksanaLayout.createSequentialGroup()
                             .addComponent(jLabel20)
                             .addGap(25, 25, 25)
                             .addComponent(cbNamaProHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnHapusPelaksana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kelolaPelaksanaLayout.createSequentialGroup()
                             .addComponent(jLabel16)
                             .addGap(25, 25, 25)
                             .addComponent(cbNamaProTP, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,11 +297,11 @@ public class DetailProyekMP extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        kelolaPelaksanaLayout.setVerticalGroup(
+            kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kelolaPelaksanaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(cbNamaProTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSimpanPelaksana))
@@ -304,7 +310,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(kelolaPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbNamaProHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapusPelaksana)
                     .addComponent(jLabel20))
@@ -315,53 +321,108 @@ public class DetailProyekMP extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        panel.addTab("Kelola Pelaksana", jPanel5);
+        panel.addTab("Kelola Pelaksana", kelolaPelaksana);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        setPelaksana.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel17.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
-        jLabel17.setText("INPUT NAMA TUGAS   :");
+        jLabel17.setText("INPUT NAMA TUGAS                :");
 
         btnSimpanSetP.setText("SIMPAN");
 
         jLabel18.setFont(new java.awt.Font("Vani", 0, 14)); // NOI18N
         jLabel18.setText("INPUT NAMA PROGRAMMER   :");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbTugasSetP, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(25, 25, 25)
-                        .addComponent(cbNamaProSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(btnSimpanSetP)
-                .addGap(178, 178, 178))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(cbTugasSetP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSimpanSetP))
+        tblTugasSP.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama", "Pelaksana", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblTugasSP);
+
+        tblProSP.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama", "ID", "JumlahProyek"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblProSP);
+
+        jLabel3.setText("Daftar Tugas");
+
+        jLabel4.setText("Daftar Programmer dalam Proyek");
+
+        javax.swing.GroupLayout setPelaksanaLayout = new javax.swing.GroupLayout(setPelaksana);
+        setPelaksana.setLayout(setPelaksanaLayout);
+        setPelaksanaLayout.setHorizontalGroup(
+            setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(setPelaksanaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbNamaProSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbTugasSetP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSimpanSetP, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setPelaksanaLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21))
+        );
+        setPelaksanaLayout.setVerticalGroup(
+            setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(setPelaksanaLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(cbTugasSetP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(setPelaksanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(cbNamaProSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSimpanSetP)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
-        panel.addTab("SET PELAKSANA", jPanel6);
+        panel.addTab("SET PELAKSANA", setPelaksana);
 
         jLabel2.setText("Proyek Aktif");
 
@@ -469,19 +530,25 @@ public class DetailProyekMP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPanel kelolaPelaksana;
+    private javax.swing.JPanel kelolaTugas;
     private javax.swing.JLabel lblProyekAktif;
     private javax.swing.JLabel lblUser;
     private javax.swing.JTabbedPane panel;
     private javax.swing.JScrollPane panelTblTugas;
+    private javax.swing.JPanel setPelaksana;
     private javax.swing.JTable tblProDlmProyek;
+    private javax.swing.JTable tblProSP;
     private javax.swing.JTable tblProTersedia;
     private javax.swing.JTable tblTugas;
+    private javax.swing.JTable tblTugasSP;
     private java.awt.TextField txtNamaTugas;
     // End of variables declaration//GEN-END:variables
 
@@ -549,41 +616,57 @@ public class DetailProyekMP extends javax.swing.JFrame {
         cbTugasSetP.addItem(input);
     }
 
+    public void setCbNamaProSP(String input) {
+        cbNamaProSP.addItem(input);
+    }
+
+    
+
     public void setCbNamaTugas(String input) {
         cbNamaTugas.addItem(input);
     }
+    
+     public void resetCbTugasSetP() {
+        cbTugasSetP.removeAllItems();
+    }
+     
+     public void resetCbNamaProSP(){
+         cbNamaProSP.removeAllItems();
+     }
 
     public void resetCbNamaTugas() {
         cbNamaTugas.removeAllItems();
     }
-    
-    public void resetCbNamaProyek(){
+
+    public void resetCbNamaProyek() {
         cbNamaProyek.removeAllItems();
     }
-    
-   
-    public void resetCbNamaProTP(){
+
+    public void resetCbNamaProTP() {
         cbNamaProTP.removeAllItems();
     }
-    public void resetCbNamaProHapus(){
+
+    public void resetCbNamaProHapus() {
         cbNamaProHapus.removeAllItems();
     }
-    
-     public void reset(){
+
+    public void reset() {
         resetCbNamaProHapus();
         resetCbNamaProTP();
         resetCbNamaProyek();
         resetCbNamaTugas();
+        resetCbNamaProSP();
+        resetCbTugasSetP();
     }
-     
-     public void setCbNamaProTP(String e){
-         cbNamaProTP.addItem(e);
-     }
-     
-     public void setCbNamaProHapus(String e){
-         cbNamaProHapus.addItem(e);
-     }
-     
+
+    public void setCbNamaProTP(String e) {
+        cbNamaProTP.addItem(e);
+    }
+
+    public void setCbNamaProHapus(String e) {
+        cbNamaProHapus.addItem(e);
+    }
+
     public void setLblUser(String input) {
         lblUser.setText(input);
     }
@@ -595,7 +678,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
     public int getCbNamaProTP() {
         return cbNamaProTP.getSelectedIndex();
     }
-    
+
     public int getCbNamaProyek() {
         return cbNamaProyek.getSelectedIndex();
     }
@@ -641,8 +724,8 @@ public class DetailProyekMP extends javax.swing.JFrame {
     public String getTxtNamaTugas() {
         return txtNamaTugas.getText();
     }
-    
-    public void setTxtNamaTugas(String s){
+
+    public void setTxtNamaTugas(String s) {
         txtNamaTugas.setText(s);
     }
 
@@ -653,7 +736,13 @@ public class DetailProyekMP extends javax.swing.JFrame {
     public JTable getTblProTersedia() {
         return tblProTersedia;
     }
-    
-    
+
+    public JTable getTblTugasSP() {
+        return tblTugasSP;
+    }
+
+    public JTable getTblProSP() {
+        return tblProSP;
+    }
 
 }

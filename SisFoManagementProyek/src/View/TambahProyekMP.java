@@ -255,6 +255,7 @@ public class TambahProyekMP extends javax.swing.JFrame {
         cbTgl.setSelectedIndex(0);
         cbTahun.setSelectedIndex(0);
         cbBulan.setSelectedIndex(0);
+        btnHapusProyek.addActionListener(e);
     }
 
     public void reset() {

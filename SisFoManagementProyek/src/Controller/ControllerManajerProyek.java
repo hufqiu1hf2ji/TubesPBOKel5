@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.AplikasiKonsol;
+import Model.Programmer;
 import Model.Proyek;
 import Model.Tugas;
 import View.DashboardAdmin;
@@ -31,6 +32,7 @@ public class ControllerManajerProyek implements ActionListener {
     private TambahProyekMP tpMP;
     private HapusProyekMP hpMP;
     private DetailProyekMP dpMP;
+    private String[][] arTambahP;
 
     public ControllerManajerProyek(Controller c, AplikasiKonsol m) {
         this.c = c;
@@ -94,10 +96,12 @@ public class ControllerManajerProyek implements ActionListener {
 
     public void dpMPBukaLayar() {
         try {
+            model.setNonAktifPro();
             dpMP.setVisible(true);
             dpMP.getPanel().setVisible(false);
             dpMP.reset();
             ViewDetailProyek();
+
             dpMP.setLblUser(model.getMPAktif());
         } catch (Exception e) {
             dpMP.viewErrorMsg(e.getMessage());
@@ -156,15 +160,24 @@ public class ControllerManajerProyek implements ActionListener {
 
             DefaultTableModel mdlTable = (DefaultTableModel) dpMP.getTblTugas().getModel();
             mdlTable.setRowCount(0);
+
+            DefaultTableModel mdlTable2 = (DefaultTableModel) dpMP.getTblTugasSP().getModel();
+            mdlTable2.setRowCount(0);
             if (ar2 != null) {
                 for (int i = 1; i < ar2.length; i++) {
                     mdlTable.addRow(new Object[]{});
+                    mdlTable2.addRow(new Object[]{});
+
                     dpMP.getTblTugas().setValueAt(ar2[i][0], i - 1, 0);
+                    dpMP.getTblTugasSP().setValueAt(ar2[i][0], i - 1, 0);
 //                ia++;
                     dpMP.getTblTugas().setValueAt(ar2[i][1], i - 1, 1);
+                    dpMP.getTblTugasSP().setValueAt(ar2[i][1], i - 1, 1);
 //                ia++;
                     dpMP.getTblTugas().setValueAt(ar2[i][2], i - 1, 2);
+                    dpMP.getTblTugasSP().setValueAt(ar2[i][2], i - 1, 2);
                     dpMP.setCbNamaTugas(ar2[i][0]);
+                    dpMP.setCbTugasSetP(ar2[i][0]);
 //                ia++;
 //                fr.getTable().setValueAt(ia, i, i);
                 }
@@ -173,50 +186,74 @@ public class ControllerManajerProyek implements ActionListener {
             throw new IllegalStateException("Gagal View Tugas");
         }
     }
-    
-       public void ViewTambahPelaksana() {
+
+    public String[][] ViewTambahPelaksana() {
         try {
             dpMP.resetCbNamaProTP();
+            dpMP.resetCbTugasSetP();
             String[][] ar2 = model.listProgrammerTersediaP();
             DefaultTableModel mdlTable = (DefaultTableModel) dpMP.getTblProTersedia().getModel();
             mdlTable.setRowCount(0);
-            for (int i = 0; i < ar2.length; i++) {
-                mdlTable.addRow(new Object[]{});
-                dpMP.getTblTugas().setValueAt(ar2[i][0], i, 0);
+
+            if (ar2 != null) {
+
+                for (int i = 0; i < ar2.length; i++) {
+                    mdlTable.addRow(new Object[]{});
+                    dpMP.getTblProTersedia().setValueAt(ar2[i][0], i, 0);
 //                ia++;
-                dpMP.getTblTugas().setValueAt(ar2[i][1], i, 1);
+                    dpMP.getTblProTersedia().setValueAt(ar2[i][1], i, 1);
 //                ia++;
-                dpMP.getTblTugas().setValueAt(ar2[i][2], i, 2);
-                dpMP.setCbNamaProTP(ar2[i][0]);
+                    dpMP.getTblProTersedia().setValueAt(ar2[i][2], i, 2);
+                    dpMP.setCbNamaProTP(ar2[i][0]);
 //                ia++;
 //                fr.getTable().setValueAt(ia, i, i);
+                }
+                return ar2;
+            } else {
+                return null;
             }
+
         } catch (Exception e) {
-            throw new IllegalStateException("Gagal View Tugas");
+            throw new IllegalStateException("Gagal View Tambah Pelaksana");
         }
     }
-    
+
     public void ViewPelaksanaProyek() {
         try {
             dpMP.resetCbNamaProHapus();
+            dpMP.resetCbNamaProSP();
             String[][] ar2 = model.listProgrammerProyek();
             DefaultTableModel mdlTable = (DefaultTableModel) dpMP.getTblProDlmProyek().getModel();
             mdlTable.setRowCount(0);
-            for (int i = 0; i < ar2.length; i++) {
-                mdlTable.addRow(new Object[]{});
-                dpMP.getTblTugas().setValueAt(ar2[i][0], i, 0);
+
+            DefaultTableModel mdlTable2 = (DefaultTableModel) dpMP.getTblProSP().getModel();
+            mdlTable2.setRowCount(0);
+            if (ar2 != null) {
+
+                for (int i = 0; i < ar2.length; i++) {
+                    mdlTable.addRow(new Object[]{});
+                    mdlTable2.addRow(new Object[]{});
+                    dpMP.getTblProDlmProyek().setValueAt(ar2[i][0], i, 0);
+                    dpMP.getTblProSP().setValueAt(ar2[i][0], i, 0);
 //                ia++;
-                dpMP.getTblTugas().setValueAt(ar2[i][1], i, 1);
+                    dpMP.getTblProDlmProyek().setValueAt(ar2[i][1], i, 1);
+                    dpMP.getTblProSP().setValueAt(ar2[i][1], i, 1);
 //                ia++;
-                dpMP.getTblTugas().setValueAt(ar2[i][2], i, 2);
-                dpMP.setCbNamaProHapus(ar2[i][0]);
-                
+                    dpMP.getTblProDlmProyek().setValueAt(ar2[i][2], i, 2);
+                    dpMP.getTblProSP().setValueAt(ar2[i][2], i, 2);
+                    dpMP.setCbNamaProHapus(ar2[i][0]);
+                    dpMP.setCbNamaProSP(ar2[i][0]);
 //                ia++;
 //                fr.getTable().setValueAt(ia, i, i);
+                }
             }
         } catch (Exception e) {
-            throw new IllegalStateException("Gagal View Tugas");
+            throw new IllegalStateException("Gagal View Pelaksana");
         }
+    }
+
+    public void AktifitasTerakhir() {
+        
     }
 
     @Override
@@ -284,15 +321,20 @@ public class ControllerManajerProyek implements ActionListener {
             PindahLayar();
             hpMPBukaLayar();
         }
-        
+
         //DETAIL PROYEK
         if (source.equals(dpMP.getBtnAktifkan())) {
             try {
-
-                dpMP.getPanelTblTugas().setWheelScrollingEnabled(true);
-                dpMP.setLblProyekAktif(model.getProyekAktif());
                 ViewTugas();
-                dpMP.getPanel().setVisible(true);
+                if (!model.getProyekAktif().equals("Tidak ada")) {
+                    dpMP.getPanelTblTugas().setWheelScrollingEnabled(true);
+                    dpMP.setLblProyekAktif(model.getProyekAktif());
+                    dpMP.getPanel().setVisible(true);
+                    arTambahP = ViewTambahPelaksana();
+                    ViewPelaksanaProyek();
+                } else {
+                    dpMP.viewErrorMsg("Tidak ada proyek yang dipilih");
+                }
             } catch (Exception e) {
                 dpMP.viewErrorMsg(e.getMessage());
             }
@@ -328,19 +370,45 @@ public class ControllerManajerProyek implements ActionListener {
 
         if (source.equals(dpMP.getBtnSimpanPelaksana())) {
             try {
-
+                Programmer temp = model.menuAddProgrammer(arTambahP, dpMP.getCbNamaProTP());
+                if (temp != null) {
+                    dpMP.viewErrorMsg("Programmer " + temp.getNama() + " berhasil ditambahkan");
+                } else {
+                    dpMP.viewErrorMsg("Tidak ada Programmer yang dipilih.");
+                }
             } catch (Exception e) {
-
+                dpMP.viewErrorMsg(e.getMessage());
             }
+            ViewTambahPelaksana();
+            ViewPelaksanaProyek();
         }
 
         if (source.equals(dpMP.getBtnHapusPelaksana())) {
             try {
+                Programmer temp = model.menuRemoveProgrammer(dpMP.getCbNamaProHapus());
+                if (temp != null) {
+                    dpMP.viewErrorMsg("Programmer " + temp.getNama() + " berhasil dihapus dari proyek");
+                } else {
+                    dpMP.viewErrorMsg("Tidak ada Programmer yang dipilih.");
+                }
 
             } catch (Exception e) {
-
+                dpMP.viewErrorMsg(e.getMessage());
             }
+            ViewTambahPelaksana();
+            ViewPelaksanaProyek();
         }
+
+        if (source.equals(dpMP.getBtnSimpanSetP())) {
+            try {
+                model.menuSetPelaksana(dpMP.getCbNamaProSP(), dpMP.getCbTugasSetP());
+            } catch (Exception e) {
+                dpMP.viewErrorMsg(e.getMessage());
+            }
+            ViewTambahPelaksana();
+            ViewPelaksanaProyek();
+        }
+
     }
 
 }

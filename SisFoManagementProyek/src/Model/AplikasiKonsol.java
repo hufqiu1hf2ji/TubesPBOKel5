@@ -31,6 +31,11 @@ public class AplikasiKonsol {
 
     //FUNGSIONALITAS BERSAMA
     //----------------------------------------------------------------------------------------------------
+    public void setNonAktifPro(){
+        pro=null;
+    }
+    
+    
     public String getMPAktif() {
         if (mp != null) {
             return mp.getNama();
@@ -469,12 +474,12 @@ public class AplikasiKonsol {
 
     //Menghapus Tugas di proyek aktif dengan indexTugas
     public Tugas menuRemoveTugas(int index) {
-        if (index < pro.getSizeTugas() && index > -1) {
+        if (index < pro.getSizeTugas() && index > -1 & pro.getTugas(index)!=null) {
             Tugas temp = pro.getTugas(index);
             pro.removeTugas(index);
             return temp;
         } else {
-            return null;
+            throw new IllegalStateException("Gagal Remove Tugas");
         }
     }
 
@@ -507,8 +512,9 @@ public class AplikasiKonsol {
         Programmer temp = searchProgrammer(ar[indexProgrammer][1]);
         if (temp != null) {
             pro.addProgrammer(temp);
-        }
-        return temp;
+            return temp;
+        }else throw new IllegalStateException("Gagal menambahkan Programmer");
+        
     }
 
     //Menghapus Programmer pada proyek yang aktif berdasarkan indexProgrammer
