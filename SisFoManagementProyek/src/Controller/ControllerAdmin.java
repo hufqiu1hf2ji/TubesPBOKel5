@@ -251,7 +251,7 @@ public class ControllerAdmin implements ActionListener {
                     atMP.viewErrorMsg("Input Berhasil");
                 }
             } catch (Exception e) {
-                atMP.viewErrorMsg("Input gagal");
+                atMP.viewErrorMsg(e.getMessage());
             }
             PindahLayar();
             atMPBukaLayar();
@@ -278,7 +278,7 @@ public class ControllerAdmin implements ActionListener {
                     atPro.viewErrorMsg("Input Berhasil");
                 }
             } catch (Exception e) {
-                atPro.viewErrorMsg("Input gagal");
+                atPro.viewErrorMsg(e.getMessage());
             }
             PindahLayar();
             atProBukaLayar();
