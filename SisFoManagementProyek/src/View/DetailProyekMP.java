@@ -474,7 +474,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
                     .addComponent(lblProyekAktif))
                 .addGap(27, 27, 27)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
             .addComponent(jDesktopPane1)
         );
 
