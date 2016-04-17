@@ -50,12 +50,9 @@ public class ControllerAdmin implements ActionListener {
         ahPro.addListener(this);
         atMP.addListener(this);
         atPro.addListener(this);
-    }
-
-    public void trigerLogin() {
-        dashAd.setVisible(true);
         dashAd.addListener(this);
     }
+
 
     public void PindahLayar() {
         if (dashAd.isShowing()) {
@@ -90,6 +87,7 @@ public class ControllerAdmin implements ActionListener {
         ahMP.setlblUserAdmin("Admin");
         ahMP.getPanelHapusMP().setWheelScrollingEnabled(true);
         ahMP.reset();
+        ViewMP();
     }
 
     public void ahProBukaLayar() {
@@ -97,18 +95,21 @@ public class ControllerAdmin implements ActionListener {
         ahPro.setlblUserAdmin("Admin");
         ahPro.getPanelHapusP().setWheelScrollingEnabled(true);
         ahPro.reset();
+         ViewP();
     }
 
     public void atMPBukaLayar() {
         atMP.setVisible(true);
         atMP.setlblUserAdmin("Admin");
         atMP.reset();
+        
     }
 
     public void atProBukaLayar() {
         atPro.setVisible(true);
         atPro.setlblUserAdmin("Admin");
         atPro.reset();
+       
     }
 
     public void ViewMP() {
@@ -127,10 +128,10 @@ public class ControllerAdmin implements ActionListener {
                     ahMP.getTblMP().setValueAt(ar2[i][0], i, 0);
 //                ia++;
                     dashAd.getTblMP().setValueAt(ar2[i][1], i, 1);
-                    ahMP.getTblMP().setValueAt(ar2[i][0], i, 1);
+                    ahMP.getTblMP().setValueAt(ar2[i][1], i, 1);
 //                ia++;
                     dashAd.getTblMP().setValueAt(ar2[i][2], i, 2);
-                    ahMP.getTblMP().setValueAt(ar2[i][0], i, 2);
+                    ahMP.getTblMP().setValueAt(ar2[i][2], i, 2);
 //                ia++;
 //                fr.getTable().setValueAt(ia, i, i);
                 }
@@ -209,7 +210,7 @@ public class ControllerAdmin implements ActionListener {
         if (source.equals(ahPro.getBtnHapus())) {
             try {
                 Programmer temp = model.menuRemoveProgrammer(ahPro.getTextIdPro());
-                ahPro.viewErrorMsg("Programmer " + temp.getNama() + "berhasil dihapus.");
+                ahPro.viewErrorMsg("Programmer " + temp.getNama() + " berhasil dihapus.");
             } catch (Exception e) {
                 ahPro.viewErrorMsg(e.getMessage());
             }
@@ -221,9 +222,9 @@ public class ControllerAdmin implements ActionListener {
         if (source.equals(ahMP.getBtnHapus())) {
             try {
                 ManajerProyek temp = model.menuRemoveManajerProyek(ahMP.getTextIdMP());
-                ahPro.viewErrorMsg("Manajer Proyek " + temp.getNama() + " berhasil dihapus.");
+                ahMP.viewErrorMsg("Manajer Proyek " + temp.getNama() + " berhasil dihapus.");
             } catch (Exception e) {
-                ahPro.viewErrorMsg(e.getMessage());
+                ahMP.viewErrorMsg(e.getMessage());
             }
             PindahLayar();
             ahMPBukaLayar();
@@ -240,9 +241,9 @@ public class ControllerAdmin implements ActionListener {
                 String password = atMP.getTextPassMP();
                 String jk = null;
                 if (atMP.getCbJenisKelaminMP() == 0) {
-                    jk = "L";
+                    jk = "l";
                 } else {
-                    jk = "P";
+                    jk = "p";
                 }
                 if (nama.equals("") || telepon.equals("") || alamat.equals("") || id.equals("") || password.equals("")) {
                     atMP.viewErrorMsg("Harap isi semua field diatas");

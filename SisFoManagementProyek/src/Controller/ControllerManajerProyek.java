@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//NEW
 package Controller;
 
 import Model.AplikasiKonsol;
@@ -76,6 +77,7 @@ public class ControllerManajerProyek implements ActionListener {
         try {
             tpMP.setVisible(true);
             tpMP.reset();
+            tpMP.setLblUser(model.getMPAktif());
         } catch (Exception e) {
             tpMP.viewErrorMsg(e.getMessage());
         }
@@ -156,6 +158,7 @@ public class ControllerManajerProyek implements ActionListener {
     public void ViewTugas() {
         try {
             dpMP.resetCbNamaTugas();
+            dpMP.resetCbTugasSetP();
             String[][] ar2 = model.menuDetailProyek(dpMP.getCbNamaProyek());
 
             DefaultTableModel mdlTable = (DefaultTableModel) dpMP.getTblTugas().getModel();
@@ -190,7 +193,6 @@ public class ControllerManajerProyek implements ActionListener {
     public String[][] ViewTambahPelaksana() {
         try {
             dpMP.resetCbNamaProTP();
-            dpMP.resetCbTugasSetP();
             String[][] ar2 = model.listProgrammerTersediaP();
             DefaultTableModel mdlTable = (DefaultTableModel) dpMP.getTblProTersedia().getModel();
             mdlTable.setRowCount(0);
@@ -253,7 +255,7 @@ public class ControllerManajerProyek implements ActionListener {
     }
 
     public void AktifitasTerakhir() {
-        
+
     }
 
     @Override
@@ -397,6 +399,7 @@ public class ControllerManajerProyek implements ActionListener {
             }
             ViewTambahPelaksana();
             ViewPelaksanaProyek();
+            ViewTugas();
         }
 
         if (source.equals(dpMP.getBtnSimpanSetP())) {
@@ -405,7 +408,7 @@ public class ControllerManajerProyek implements ActionListener {
             } catch (Exception e) {
                 dpMP.viewErrorMsg(e.getMessage());
             }
-            ViewTambahPelaksana();
+            ViewTugas();
             ViewPelaksanaProyek();
         }
 

@@ -21,7 +21,7 @@ public class AplikasiKonsol {
     //private Programmer[] daftarProgrammer = new Programmer[200];
     private ArrayList<Programmer> daftarProgrammer = new ArrayList<Programmer>();
 
-    private int indexLogin = -1;
+    private int indexLogina = -1;
     static private ManajerProyek mp;
     static private Programmer p;
     static private Proyek pro;
@@ -31,11 +31,10 @@ public class AplikasiKonsol {
 
     //FUNGSIONALITAS BERSAMA
     //----------------------------------------------------------------------------------------------------
-    public void setNonAktifPro(){
-        pro=null;
+    public void setNonAktifPro() {
+        pro = null;
     }
-    
-    
+
     public String getMPAktif() {
         if (mp != null) {
             return mp.getNama();
@@ -207,30 +206,47 @@ public class AplikasiKonsol {
 
     //Menambahkan ManajerProyek melalui fungsi addManajerProyek ke dalam SISTEM.
     public ManajerProyek menuAddManajerProyek(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
-        ManajerProyek m = new ManajerProyek(nama, jenisKelamin, telepon, alamat, Id, Password);
-        addManajerProyek(m);
-        return m;
+        if (cekID(Id)) {
+            ManajerProyek m = new ManajerProyek(nama, jenisKelamin, telepon, alamat, Id, Password);
+            addManajerProyek(m);
+            return m;
+        } else {
+            throw new IllegalStateException("Gagal,ID sudah digunakan");
+        }
     }
 
     //Menambahkan Programmer melalui fungsi addProgrammer ke dalam SISTEM.
     public Programmer menuAddProgrammer(String nama, String jenisKelamin, String telepon, String alamat, String Id, String Password) {
-        Programmer p = new Programmer(nama, jenisKelamin, telepon, alamat, Id, Password);
-        addProgrammer(p);
-        return p;
+        if (cekID(Id)) {
+            Programmer p = new Programmer(nama, jenisKelamin, telepon, alamat, Id, Password);
+            addProgrammer(p);
+            return p;
+        } else {
+            throw new IllegalStateException("Gagal, ID sudah digunakan");
+        }
     }
 
     //Menghapus ManajerProyek pada sistem melalui fungsi deleteManajerProyek.
     public ManajerProyek menuRemoveManajerProyek(String id) {
         ManajerProyek temp = searchManajerProyek(id);
-        deleteManajerProyek(id);
-        return temp;
-    }
+        if (temp != null) {
+            deleteManajerProyek(id);
+            return temp;
+        } else {
+            throw new IllegalStateException("ManajerProyek tidak ditemukan");
+        }
 
+    }
     //Menghapus Programmer pada sistem melalui fungsi deleteProgrammer.
+
     public Programmer menuRemoveProgrammer(String id) {
         Programmer p = searchProgrammer(id);
-        deleteProgrammer(id);
-        return p;
+        if (p != null) {
+            deleteProgrammer(id);
+            return p;
+        } else {
+            throw new IllegalStateException("Programmer Tidak ditemukan");
+        }
     }
 
     public boolean menuLoginAdmin(String id, String pass) {
@@ -296,6 +312,7 @@ public class AplikasiKonsol {
 
     //Mengumpulkan data namaProyek,jumlahProgrammer,tugas belum selesai oleh si programmer,tugas selesai programmer,dan deadline setiap proyek yang di pimpin oleh manager proyek.
     public String[][] menuViewProyekProgrammer() {
+
         if (hitungProyekProgrammer(p) > 0) {
             String[][] ar = new String[hitungProyekProgrammer(p)][5];
             Proyek[] temp = arProyekProgrammer(p);
@@ -336,12 +353,14 @@ public class AplikasiKonsol {
 
     //Mengeset status suatu Tugas dengan fungsi setStatus
     public Tugas menuSetStatusTugas(int indexTugas) {
-        if (indexTugas < pro.getSizeTugas() && indexTugas > -1) {
-            setStatusTugas(p, pro.getTugas(indexTugas));
-            return pro.getTugas(indexTugas);
-        }
-        return null;
-
+        try {
+            if (indexTugas < pro.getSizeTugas() && indexTugas > -1) {
+                setStatusTugas(p, pro.getTugas(indexTugas));
+                return pro.getTugas(indexTugas);
+            }
+            return null;
+        } catch (Exception e) {
+            throw new IllegalStateException("Set status tugas gagal.");}
     }
 
     //Me-nullkan Programmer dan Proyek aktif.
@@ -419,12 +438,12 @@ public class AplikasiKonsol {
                     } else {
                         ar[i][1] = "Tidak ada";
                     }
-                    if(pro.getTugas(i-1).getStatus()==0){
+                    if (pro.getTugas(i - 1).getStatus() == 0) {
                         ar[i][2] = "Belum Selesai";
-                    }else if(pro.getTugas(i-1).getStatus()==1){
+                    } else if (pro.getTugas(i - 1).getStatus() == 1) {
                         ar[i][2] = "Sudah selesai";
                     }
-                 }
+                }
                 return ar;
             }
         }
@@ -444,7 +463,7 @@ public class AplikasiKonsol {
     //Menghapus Proyek pada ManajerProyek yang aktif berdasarkan indexProyek
     public Proyek menuRemoveProyek(int index) {
         Proyek temp = null;
-        if (index < mp.getSizeProyek() && index > -1 && mp.getProyek(index)!=null) {
+        if (index < mp.getSizeProyek() && index > -1 && mp.getProyek(index) != null) {
             temp = mp.getProyek(index);
             mp.deleteProyek(index);
             return temp;
@@ -474,7 +493,7 @@ public class AplikasiKonsol {
 
     //Menghapus Tugas di proyek aktif dengan indexTugas
     public Tugas menuRemoveTugas(int index) {
-        if (index < pro.getSizeTugas() && index > -1 & pro.getTugas(index)!=null) {
+        if (index < pro.getSizeTugas() && index > -1 & pro.getTugas(index) != null) {
             Tugas temp = pro.getTugas(index);
             pro.removeTugas(index);
             return temp;
@@ -489,8 +508,9 @@ public class AplikasiKonsol {
             pro.getTugas(indexTugas).setPelaksana(pro.getProgrammer(indexPelaksana));
             return pro.getTugas(indexTugas);
         } else {
-            return null;
+            throw new IllegalStateException("Set Pelaksana gagal");
         }
+
     }
 
     //Mengumpulkan data NamaProgrammer,IDProgrammer,dan jumlahProyeknya Programmer pada proyek aktif.
@@ -513,8 +533,10 @@ public class AplikasiKonsol {
         if (temp != null) {
             pro.addProgrammer(temp);
             return temp;
-        }else throw new IllegalStateException("Gagal menambahkan Programmer");
-        
+        } else {
+            throw new IllegalStateException("Gagal menambahkan Programmer");
+        }
+
     }
 
     //Menghapus Programmer pada proyek yang aktif berdasarkan indexProgrammer

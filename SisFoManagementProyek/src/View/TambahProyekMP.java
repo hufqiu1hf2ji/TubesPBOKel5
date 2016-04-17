@@ -167,6 +167,10 @@ public class TambahProyekMP extends javax.swing.JFrame {
     public JButton getBtnBeranda() {
         return btnBeranda;
     }
+    
+    public void setLblUser(String input){
+        lblUser.setText(input);
+    }
 
     public JButton getBtnDetailProyek() {
         return btnDetailProyek;

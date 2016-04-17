@@ -34,6 +34,7 @@ public class Controller implements ActionListener {
         l1.addListener(this);
         l.setVisible(false);
         l.addListener(this);
+        
 
     }
 
@@ -76,11 +77,12 @@ public class Controller implements ActionListener {
             if (l.getTxtuser() != null && l.getTxtpass() != null) {
                 String user = l.getTxtuser();
                 String pass = l.getTxtpass();
+                if(levelAktif!=null){
                 if (levelAktif.equals("ad")) {
                     try {
                         model.menuLoginAdmin(user, pass);
                         if (ca != null) {
-                            ca.trigerLogin();
+                            ca.dashAdBukaLayar();
                         } else {
                             ca = new ControllerAdmin(this, model);
                         }
@@ -106,7 +108,7 @@ public class Controller implements ActionListener {
                         l.viewErrorMsg(e.getMessage());
                         l.reset();
                     }
-                }else if (levelAktif.equals("pro")){
+                }else if (levelAktif.equals("p")){
                     try{
                         model.MenuLoginProgrammer(user, pass);
                         if (cp != null){
@@ -121,6 +123,7 @@ public class Controller implements ActionListener {
                         l.viewErrorMsg(e.getMessage());
                         l.reset();
                     }
+                }
                 }
             }
         }

@@ -672,6 +672,7 @@ public class DetailProyekMP extends javax.swing.JFrame {
         btnSimpanSetP.addActionListener(e);
         btnSimpanTgs.addActionListener(e);
         btnHapusTugas.addActionListener(e);
+        btnSimpanSetP.addActionListener(e);
     }
 
     public JTabbedPane getPanel() {

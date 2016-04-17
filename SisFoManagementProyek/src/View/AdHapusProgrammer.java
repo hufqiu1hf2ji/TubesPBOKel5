@@ -68,9 +68,17 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAMA", "JUMLAH PROYEK"
+                "NAMA", "ID", "JUMLAH PROYEK"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         panelHapusP.setViewportView(tblPro);
 
         jPanel1.add(panelHapusP, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 156, -1, 285));
@@ -144,7 +152,7 @@ public class AdHapusProgrammer extends javax.swing.JFrame {
 
         jPanel1.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 0, 180, -1));
 
-        jLabel2.setText("Input Nama Programmer");
+        jLabel2.setText("Input ID Programmer");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 119, -1, -1));
         jPanel1.add(textIdPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 220, -1));
 

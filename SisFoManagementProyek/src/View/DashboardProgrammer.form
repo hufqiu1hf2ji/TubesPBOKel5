@@ -90,7 +90,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="1" pref="130" max="32767" attributes="0"/>
+                  <Component id="lblUser" alignment="1" pref="130" max="32767" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnSetStatus" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnLogout" alignment="1" max="32767" attributes="0"/>
@@ -102,7 +102,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="lblUser" min="-2" pref="63" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                       <Component id="btnBeranda" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,7 +123,7 @@
                 <Property name="text" type="java.lang.String" value="LOGOUT "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblUser">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="USER :  PROGRAMMER"/>

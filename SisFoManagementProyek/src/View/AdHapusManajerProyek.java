@@ -68,7 +68,7 @@ public class AdHapusManajerProyek extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NAMA", "JUMLAH PROYEK"
+                "NAMA", "ID", "JUMLAH PROYEK"
             }
         ) {
             boolean[] canEdit = new boolean [] {
