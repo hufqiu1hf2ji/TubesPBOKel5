@@ -24,6 +24,7 @@ public class Controller implements ActionListener {
     private String levelAktif = null;
     private ControllerAdmin ca;
     private ControllerManajerProyek cmp;
+    private ControllerProgrammer cp;
 
     public Controller(AplikasiKonsol model) {
         this.model = model;
@@ -90,14 +91,28 @@ public class Controller implements ActionListener {
                         l.viewErrorMsg(e.getMessage());
                         l.reset();
                     }
-                }
-                if (levelAktif.equals("mp")) {
+                }else if (levelAktif.equals("mp")) {
                      try {
                         model.MenuLoginManajerProyek(user, pass);
                         if (cmp != null) {
                             cmp.dashMPBukaLayar();
                         } else {
                             cmp = new ControllerManajerProyek(this, model);
+                        }
+                        l.setVisible(false);
+                        levelAktif = null;
+                        l.dispose();
+                    } catch (Exception e) {
+                        l.viewErrorMsg(e.getMessage());
+                        l.reset();
+                    }
+                }else if (levelAktif.equals("pro")){
+                    try{
+                        model.MenuLoginProgrammer(user, pass);
+                        if (cp != null){
+                            cp.DashboardBukaLayar();
+                        }else{
+                            cp = new ControllerProgrammer(this, model);
                         }
                         l.setVisible(false);
                         levelAktif = null;
